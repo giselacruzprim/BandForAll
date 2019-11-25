@@ -11,7 +11,7 @@ class Presentacion extends React.Component {
           <div className="row">
             <div className="col">
               <h1 className="fraseWeb">
-              Tu banda está aquí, solo te hace falta encontrarla.
+              Tu banda está aquí, solo te hace falta encontrarla. :)
               </h1>
               <h4 className="fraseWeb2"><span>34.000+</span> personas ya lo han hecho.</h4>
             </div>

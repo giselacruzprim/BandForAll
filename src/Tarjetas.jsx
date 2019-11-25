@@ -20,7 +20,10 @@ class Tarjetas extends React.Component {
                  Edad: {this.props.edad}
                 </h5>
                 <h5 className="card-title">
-                 Instrumento: {this.props.instrumento}
+                 Instrumento 1: {this.props.instrumento1}
+                </h5>
+                <h5 className="card-title">
+                 Instrumento 2: {this.props.instrumento2}
                 </h5>
                 <h5 className="card-title">
                 Genero: {this.props.genero_musical}

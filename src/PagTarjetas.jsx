@@ -56,11 +56,27 @@ class PagTarjetas extends React.Component {
       .catch(err => console.log(err));
   }
 
+  rangos(edad){
+    if (edad==="rango1"){
+      return [0,20];
+    }
+    else if(edad==="rango2"){
+      return [21,30];
+    }
+    else if(edad==="rango3"){
+      return [31,40];
+    }
+    else if(edad==="rango4"){
+      return [41,99];
+    }
+  
+  }
 
-  cargaFiltro(genero, instrumento, nivel, edad) {
+  cargaFiltro(genero, instrumento, edad) {
+
     let url = "";
     let afiltros=[];
-
+console.log(edad);
     if (genero !== "Género"){
       afiltros.push(`(genero_musical,like,${genero}~)`);
     }
@@ -68,7 +84,8 @@ class PagTarjetas extends React.Component {
       afiltros.push(`((instrumento1,like,${instrumento}~)~or(instrumento2,like,${instrumento}~)~or(instrumento3,like,${instrumento}~)~or(instrumento4,like,${instrumento}~)~or(instrumento5,like,${instrumento}~))`);
     }
     if (edad !== "Edad"){
-      afiltros.push(`(edad,like,${edad}~)`);
+      let minmax = this.rangos(edad);
+      afiltros.push(`((edad,gte,${minmax[0]})~and(edad,lte,${minmax[1]}))`);
     }
 
     if (afiltros.length==0 ) {
@@ -103,18 +120,19 @@ class PagTarjetas extends React.Component {
         imagen={el.imagen}
         texto={el.descripcion}
         instrumento1={el.instrumento1}
+        instrumento2={el.instrumento2}
         genero_musical={el.genero_musical}
       />
     ));
 
     return (
       <>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
-            <div className="col-4">
+            <div className="col-2">
               <FiltrosMusico cargaFiltro={this.cargaFiltro} />
             </div>
-            <div className="col-8">
+            <div className="col-10">
               {varTarjetas}
               <button
                 disabled={this.state.pagina === 0}

@@ -41,7 +41,7 @@ class Top extends React.Component {
               <input
                 className="form-control buscador mr-sm-2" 
                 type="search"
-                placeholder="Buscar músico"
+                placeholder="Busca por instrumento, género o localidad..."
                 aria-label="Search"
               />
               

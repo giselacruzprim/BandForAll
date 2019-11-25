@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import banda from "./fotos/banda.png";
 import musico from "./fotos/musico.jpg";
@@ -8,36 +7,37 @@ class Presentacion extends React.Component {
   render() {
     return (
       <>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <h1 class="fraseWeb">
-                La mejor música al alcance de tus manos!!!
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h1 className="fraseWeb">
+              Tu banda está aquí, solo te hace falta encontrarla.
               </h1>
+              <h4 className="fraseWeb2"><span>34.000+</span> personas ya lo han hecho.</h4>
             </div>
           </div>
 
-          <div class="row dosTarjetas">
-            <div class="col-6">
-              <Link to="/pagTarjetas">
-                <div class="card tarjeta" style={{ width: "80%" }}>
-                  <div clase="ahora">
-                    <img src={banda} class="card-img-top" alt="banda" />
-                    <div class="card-body">Encuentra tu banda</div>
+          <div className="row dosTarjetas">
+            <div className="col-6">
+              <div className="card tarjeta" style={{ width: "80%" }}>
+                <div clase="ahora">
+                  <img src={banda} className="card-img-top" alt="banda" />
+                  <div className="card-body">
+                    <Link to="/pagTarjetas">Encuentra tu banda</Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
 
-            <div class="col-6">
-              <Link to="/pagTarjetas">
-                <div class="card tarjeta" style={{ width: "80%" }}>
-                  <div class="ahora">
-                    <img src={musico} class="card-img-top" alt="musico" />
-                    <div class="card-body">Encuentra músico</div>
+            <div className="col-6">
+              <div className="card tarjeta" style={{ width: "80%" }}>
+                <div className="ahora">
+                  <img src={musico} className="card-img-top" alt="musico" />
+                  <div className="card-body">
+                    <Link to="/pagTarjetas">Encuentra músico</Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
         </div>

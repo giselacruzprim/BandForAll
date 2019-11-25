@@ -1,0 +1,229 @@
+
+body {
+  background-color: rgb(59, 50, 23);
+}
+
+i.logoProyect {
+  margin-right: 10px;
+  font-size: 30px;
+  color: #333333;
+}
+
+div.tarjeta {
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 50px;
+  height: 350px;
+  background-color: #424242;
+}
+
+div.tarjeta h2 {
+  font-family: 'Catamaran', sans-serif;
+  text-align: center;
+  color: #333333;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+div.tarjeta:hover h2 {
+  font-size: 35px;
+}
+
+div.tarjeta:hover img {
+  opacity: 0.7;
+}
+
+div.iconos i {
+  color: white;
+  font-size: 30px;
+}
+
+div.final {
+  background-color: #90A0E8;
+  margin-bottom: 0px;
+  margin-top: 60px;
+  height: 150px;
+  padding: 15px;
+}
+
+h1.fraseWeb {
+  font-family: 'Catamaran', sans-serif;
+  color: #333333;
+  padding-top: 40px;
+  font-weight: 700;
+  font-size: 80px;
+  text-align: left;
+}
+
+h4.fraseWeb2 span {
+  font-family: 'Catamaran', sans-serif;
+  text-align: left;
+  font-weight: 500;
+}
+
+h4.fraseWeb2 {
+  font-family: 'Catamaran', sans-serif;
+  text-align: left;
+  font-weight: 300;
+}
+
+div.lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 100px;
+}
+
+div.lateral select {
+  width: 80%;
+}
+
+select.filtro {
+  margin: 20px;
+}
+
+div.inicioSesion {
+  width: 300px;
+  padding: 15px;
+}
+
+div.dosTarjetas {
+  display: flex;
+  justify-content: center;
+}
+
+div.dosTarjetas {
+  align-items: center;
+}
+
+nav.navegadorInicial {
+  background-color: transparent !important;
+  /* background-color: aqua !important; */
+}
+
+/* AÑADIR AL DOC PRINCIPAL / BOTONES FOOTER */
+
+img.applestore {
+  width: 153px;
+  height: 46px;
+}
+
+div.botonesapp {
+  text-align: center;
+}
+
+h6 {
+  display: inline-block;
+  text-align: justify;
+  font-family: 'Catamaran', sans-serif;
+  text-align: left;
+  font-weight: 500;
+}
+
+div.iconos {
+  text-align: center;
+}
+
+.ayuda {
+  font-weight: 600 !important;
+  color: #333333 !important;
+  text-decoration-line: none;
+  line-height: 64px !important;
+  text-align: end;
+}
+
+.ayuda:hover {
+  height: 100% !important;
+  text-decoration-line: none;
+  line-height: 64px !important;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-bottom-color: #333333;
+  line-height: 2px;
+  display: inline-block !important;
+}
+
+.registrate {
+  font-weight: 600 !important;
+  color: #333333 !important;
+  text-decoration-line: none;
+  line-height: 64px !important;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-bottom-color: transparent;
+  margin-right: 15px;
+  display: inline-block !important;
+}
+
+.registrate:hover {
+  text-decoration-line: none;
+  border-bottom-color: #333333;
+}
+
+
+
+/*LOGOTIPO*/
+
+img.logotipo {
+  width: 130px;
+  height: auto;
+  padding-top: 7px;
+  padding-left: 7px;
+  padding-right: 30px;
+}
+
+link.logotipo {
+  width: 94px
+}
+
+.nav-link {
+  font-weight: 600 !important;
+}
+
+input.form-control.contrasenya {
+  width: 200px;
+
+}
+.correo {
+  width: 200px;
+  margin: 10px 0;
+
+}
+
+.menuinicio {
+  transform: translate3d(-150px, 60px, 60px);
+  width: 275px;
+  text-align: center;
+  padding: 0 40px !important;
+}
+
+
+.aceptar {
+
+text-align: center;
+width: 100%;
+margin-bottom: 20px;
+margin-top: 10px;
+}
+
+.form-inline {
+  width: 600px;
+}
+
+input.buscador {
+  width: 400px !important;
+}
+
+div.iconoPerfil{
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50px;
+}
+
+body {
+    background-color: yellow;
+}

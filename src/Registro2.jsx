@@ -50,7 +50,7 @@ class Registro2 extends React.Component {
 
     return (
       <>
-        <form className="container" >
+        <form className="container">
           <div className="form-group">
             <input
               class="form-control"
@@ -60,9 +60,9 @@ class Registro2 extends React.Component {
           </div>
 
           <div className="form-group">
-            <label className="d-block" htmlFor="exampleFormControlInput1">
+            <h5 className="d-block" htmlFor="exampleFormControlInput1">
               Sexo
-            </label>
+            </h5>
 
             <div className="form-check form-check-inline">
               <input
@@ -105,6 +105,8 @@ class Registro2 extends React.Component {
           </div>
 
           <div class="row">
+            <h5>¿Qué instrumentos tocas?</h5>
+
             <div class="col-7">
               <div class="form-group">
                 <select class="form-control">
@@ -144,8 +146,11 @@ class Registro2 extends React.Component {
           </div>
 
           <div class="form-group">
+            <h5>¿Qué géneros tocas?</h5>
             <select class="form-control">
-              <option disabled selected>Género</option>
+              <option disabled selected>
+                Género
+              </option>
               {filtrosGenero}
             </select>
             <select class="form-control">
@@ -153,9 +158,15 @@ class Registro2 extends React.Component {
               {filtrosGenero}
             </select>
           </div>
+          <div class="col-7">
+            <h5>Localidad</h5>
+            <select class="form-control">
+              <option>Localidad</option>
+            </select>
+          </div>
 
           <div class="form-group">
-            <label for="exampleFormControlFile1">Adjunta tu foto</label>
+            <h5 for="exampleFormControlFile1">Adjunta tu foto</h5>
             <input
               type="file"
               class="form-control-file"
@@ -164,7 +175,7 @@ class Registro2 extends React.Component {
           </div>
 
           <div class="form-group">
-            <label for="exampleFormControlTextarea1">Datos adicionales</label>
+            <h5 for="exampleFormControlTextarea1">Datos adicionales</h5>
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"

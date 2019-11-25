@@ -1,4 +1,6 @@
 import React from "react";
+import "./tipo.css";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
@@ -9,6 +11,8 @@ import Ayuda from "./Ayuda.jsx";
 import Registro from "./Registro.jsx";
 import PagTarjetas from "./PagTarjetas.jsx";
 import PerfilUsuario from "./PerfilUsuario.jsx"
+import "./estilos.css";
+
 
 class App extends React.Component {
   render() {
@@ -32,4 +36,5 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+export default App; 
+

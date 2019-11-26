@@ -36,58 +36,45 @@ class Top extends React.Component {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <Link className="logotipo" to="/inicio">
-            <img className="logotipo" src={Logo} />
-          </Link>
+          <Link className="logotipo" to="/inicio"><img className="logotipo" src={Logo}/></Link>
           <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control buscador mr-sm-2"
-              type="search"
-              placeholder="Busca por instrumento, género o localidad..."
-              aria-label="Search"
-            />
+              <input
+                className="form-control buscador mr-sm-2" 
+                type="search"
+                placeholder="Busca por instrumento, género o localidad..."
+                aria-label="Search"
+              />
+              
 
-            <button
-              className="btn btn-dark my-2 my-sm-0 btn btn-secondary"
-              type="submit"
-            >
-              Buscar
-            </button>
-          </form>
+              
+              <button
+                className="btn btn-dark my-2 my-sm-0 btn btn-secondary"
+                type="submit"
+              >
+                Buscar
+              </button>
+              </form>
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <Link className="registrate" to="/registro">
-                  Regístrate
-                </Link>
+                <Link className="registrate" to="/registro">Regístrate</Link>
               </li>
               <li className="nav-item">
-                <Link className="ayuda" to="/ayuda">
-                  Ayuda
-                </Link>
+                <Link className="ayuda" to="/ayuda">Ayuda</Link>
               </li>
             </ul>
-            <Link to="/verPerfil">
-              <div className="iconoPerfil">
-                <img src="" alt="" />
-              </div>
-            </Link>
           </div>
           <UncontrolledDropdown className="dropdown" setActiveFromChild>
             <DropdownToggle tag="a" className="nav-link" caret>
               Iniciar sesión
             </DropdownToggle>
 
+
             <DropdownMenu className="menuinicio">
-              <Form.Control
-                className="correo"
-                placeholder="Correo electrónico"
-              />
-              <Form.Control className="correo" placeholder="Contraseña" />
-              <Button className="aceptar" color="primary">
-                Aceptar
-              </Button>
+                <Form.Control  className="correo" placeholder="Correo electrónico" />
+                <Form.Control  className="correo" placeholder="Contraseña" />
+              <Button className="aceptar" color="primary">Aceptar</Button>
             </DropdownMenu>
           </UncontrolledDropdown>
         </nav>

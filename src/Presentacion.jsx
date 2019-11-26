@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import banda from "./fotos/banda.png";
-import musico from "./fotos/musico.jpg";
+import banda from "./fotos/targeta1.png";
+import musico from "./fotos/targeta2.png";
 
 class Presentacion extends React.Component {
   render() {
@@ -17,30 +17,30 @@ class Presentacion extends React.Component {
             </div>
           </div>
 
-          <div className="row dosTarjetas">
-            <div className="col-6">
-              <div className="card tarjeta" style={{ width: "80%" }}>
-                <div clase="ahora">
+      
+<div className="row">
+<div className="col-12 col-md-6 mb-4">
+<a href="/pagTarjetasBanda">
                   <img src={banda} className="card-img-top" alt="banda" />
-                  <div className="card-body">
-                    <Link to="/pagTarjetasBanda">Encuentra tu banda</Link>
-                  </div>
-                </div>
-              </div>
+                  </a>
+
+</div>
+
+<div className="col-12 col-md-6 mb-4">
+<a href="/pagTarjetas">
+            <img src={musico} className="card-img-top" alt="musico" />
+</a>
+</div>
+
+</div>
+     
+            {/* <Link to="/pagTarjetas">Encuentra músico</Link> */}
+           
+
             </div>
 
-            <div className="col-6">
-              <div className="card tarjeta" style={{ width: "80%" }}>
-                <div className="ahora">
-                  <img src={musico} className="card-img-top" alt="musico" />
-                  <div className="card-body">
-                    <Link to="/pagTarjetas">Encuentra músico</Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+
       </>
     );
   }

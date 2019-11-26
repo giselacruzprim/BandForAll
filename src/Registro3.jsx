@@ -1,7 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { APIURL } from "./Datos.js";
 import { FormGroup, Input, Label } from "reactstrap";
-import {APIURL} from "./Datos.js";
+
 
 class Registro3 extends React.Component {
   

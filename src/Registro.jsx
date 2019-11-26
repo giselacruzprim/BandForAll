@@ -23,8 +23,8 @@ class Registro extends React.Component {
       instrumentoBanda1: "",
       instrumentoBanda2: "",
       textoBanda: "",
-      fotoMusico:"",
-      textoMusico:""
+      fotoMusico: "",
+      textoMusico: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -133,6 +133,7 @@ class Registro extends React.Component {
           <div className="row">
             <div className="col-5"></div>
             <div className="col-7">
+              <h4>Datos usuario</h4>
               <div className="row">
                 <div className="col">
                   <div className="form-group">
@@ -195,6 +196,7 @@ class Registro extends React.Component {
                 </div>
                 <div className="row">
                   <div className="col">
+                    <h5>¿Qué instrumentos tocas?</h5>
                     <div className="row">
                       <div class="col-7">
                         <div class="form-group">
@@ -203,6 +205,7 @@ class Registro extends React.Component {
                             onChange={this.handleInputChange}
                             value={this.state.instrumento1}
                             name="instrumento1"
+                  
                           >
                             <option>Instrumento 1</option>
                             {filtrosInstrumentos}
@@ -223,8 +226,7 @@ class Registro extends React.Component {
                           class="form-control"
                           onChange={this.handleInputChange}
                           value={this.state.nivel1}
-                          name="nivel1"
-                        >
+                          name="nivel1">
                           <option>Nivel</option>
                           <option>Principiante</option>
                           <option>Intermedio</option>
@@ -335,11 +337,23 @@ class Registro extends React.Component {
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
-                        <option>6</option>
-                        <option>6+</option>
+                        <option>5+</option>
                       </select>
                     </div>
-
+                    <div class="form-group">
+                      <h5>¿Género de la banda?</h5>
+                      <select
+                        class="form-control"
+                        onChange={this.handleInputChange}
+                        value={this.state.genero1}
+                        name="genero1"
+                      >
+                        <option disabled selected>
+                          Género
+                        </option>
+                        {filtrosGenero}
+                      </select>
+                      </div>
                     <div className="form-group">
                       <h5>¿Qué músicos buscas?</h5>
                       <select

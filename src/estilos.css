@@ -1,6 +1,6 @@
 
 body {
-  background-color: rgb(59, 50, 23);
+  background-color: rgb(253, 255, 242);
 }
 
 i.logoProyect {
@@ -55,18 +55,31 @@ h1.fraseWeb {
   font-weight: 700;
   font-size: 80px;
   text-align: left;
+  margin-left: 35px;
+}
+
+.faqs {
+  font-family: 'Catamaran', sans-serif;
+  color: #333333;
+  padding-top: 40px;
+  font-weight: 700;
+  font-size: 80px;
+  text-align: left;
+  margin-left: 35px;
 }
 
 h4.fraseWeb2 span {
   font-family: 'Catamaran', sans-serif;
   text-align: left;
   font-weight: 500;
+  margin-left: 35px;
 }
 
 h4.fraseWeb2 {
   font-family: 'Catamaran', sans-serif;
   text-align: left;
   font-weight: 300;
+  margin-bottom: 55px;
 }
 
 div.lateral {
@@ -210,7 +223,7 @@ margin-top: 10px;
 }
 
 .form-inline {
-  width: 600px;
+  width: 1000px;
 }
 
 input.buscador {
@@ -224,6 +237,8 @@ div.iconoPerfil{
   border-radius: 50px;
 }
 
-body {
-    background-color: yellow;
+
+.dropdown {
+margin-bottom: 0px;
+padding-bottom: 3px;
 }

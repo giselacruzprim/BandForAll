@@ -10,6 +10,7 @@ import Presentacion from "./Presentacion.jsx";
 import Ayuda from "./Ayuda.jsx";
 import Registro from "./Registro.jsx";
 import PagTarjetas from "./PagTarjetas.jsx";
+import PagTarjetasBanda from "./PagTarjetasBanda.jsx";
 import PerfilUsuario from "./PerfilUsuario.jsx"
 import "./estilos.css";
 
@@ -22,11 +23,12 @@ class App extends React.Component {
           <Top />
 
           <Switch>
-            <Route exact path="/" component={Presentacion}   />
+            <Route exact path="/" component={Presentacion} />
             <Route path="/registro" component={Registro} />
             <Route path="/ayuda" component={Ayuda} />
             <Route path="/inicio" component={Presentacion} />
             <Route path="/pagTarjetas" component={PagTarjetas} />
+            <Route path="/pagTarjetasBanda" component={PagTarjetasBanda} />
             <Route path="/verPerfil" component={PerfilUsuario} />
           </Switch>
 

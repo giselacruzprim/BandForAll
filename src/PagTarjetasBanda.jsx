@@ -1,14 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FiltrosMusico from "./FiltrosMusico.jsx";
-import Tarjetas from "./Tarjetas.jsx";
-import { APIURL,ELEMENTOS_POR_PAGINA } from "./Datos.js";
+import TarjetasBanda from "./TarjetasBanda.jsx";
+import { APIURL, ELEMENTOS_POR_PAGINA } from "./Datos.js";
 
-class PagTarjetas extends React.Component {
+class PagTarjetasBanda extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      musicos: [],
+      banda: [],
       pagina: 0
     };
 
@@ -16,8 +15,6 @@ class PagTarjetas extends React.Component {
     this.cargaFiltro = this.cargaFiltro.bind(this);
     this.siguiente = this.siguiente.bind(this);
     this.anterior = this.anterior.bind(this);
-  
-   
   }
 
   anterior() {
@@ -28,7 +25,7 @@ class PagTarjetas extends React.Component {
   }
 
   componentDidMount() {
-    fetch(APIURL +"bandforall_musico/count")
+    fetch(APIURL + "bandforall_musico/count")
       .then(data => data.json())
       .then(resultado =>
         this.setState(
@@ -46,52 +43,33 @@ class PagTarjetas extends React.Component {
   }
 
   cargaDatos() {
-    let url = APIURL + `bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}`;
+    let url =
+      APIURL +
+      `bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}`;
     fetch(url)
       .then(datos => datos.json())
-      .then(datosConvertidos => {
-        this.setState({ musicos: datosConvertidos });
+      .then(datosConvertidosBanda => {
+        this.setState({ banda: datosConvertidosBanda });
       })
 
       .catch(err => console.log(err));
   }
 
-  rangos(edad){
-    if (edad==="rango1"){
-      return [0,20];
-    }
-    else if(edad==="rango2"){
-      return [21,30];
-    }
-    else if(edad==="rango3"){
-      return [31,40];
-    }
-    else if(edad==="rango4"){
-      return [41,99];
-    }
-  
-  }
-
-  cargaFiltro(genero, instrumento, edad) {
-
+  cargaFiltro(generoBanda, miembros) {
     let url = "";
-    let afiltros=[];
-console.log(edad);
-    if (genero !== "Género"){
-      afiltros.push(`(genero_musical,like,${genero}~)`);
+    let afiltros = [];
+    if (generoBanda !== "GéneroBanda") {
+      afiltros.push(`(genero_musical_banda,like,${generoBanda}~)`);
     }
-    if (instrumento !== "Instrumento"){
-      afiltros.push(`((instrumento1,like,${instrumento}~)~or(instrumento2,like,${instrumento}~)~or(instrumento3,like,${instrumento}~)~or(instrumento4,like,${instrumento}~)~or(instrumento5,like,${instrumento}~))`);
-    }
-    if (edad !== "Edad"){
-      let minmax = this.rangos(edad);
-      afiltros.push(`((edad,gte,${minmax[0]})~and(edad,lte,${minmax[1]}))`);
+    if (miembros !== "Miembros") {
+      afiltros.push(`(miembros,like,${miembros}~)`);
     }
 
-    if (afiltros.length==0 ) {
+    if (afiltros.length == 0) {
       url = `${APIURL}bandforall_musico?_size=100`;
     } else {
-      url = `${APIURL}bandforall_musico?_size=100&_where=`+afiltros.join("~and");
+      url =
+        `${APIURL}bandforall_musico?_size=100&_where=` + afiltros.join("~and");
     }
 
     url = encodeURI(url);
@@ -99,42 +77,37 @@ console.log(edad);
 
     fetch(url)
       .then(data => data.json())
-      .then(datosConvertidos => {
-        this.setState({ musicos: datosConvertidos });
+      .then(datosConvertidosBanda => {
+        this.setState({ banda: datosConvertidosBanda });
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    if (this.state.musicos.length === null) {
+    if (this.state.banda.length === null) {
       return <h4>Esperando datos...</h4>;
     }
-   
+
     let i = 1;
-    let varTarjetas = this.state.musicos.map(el => (
-      <Tarjetas
+    let varTarjetasBandaBanda = this.state.banda.map(el => (
+      <TarjetasBanda
         key={i++}
-        nombre={el.nombre}
-        apellidos={el.apellidos}
-        edad={el.edad}
-        imagen={el.imagen}
-        texto={el.descripcion}
-        instrumento1={el.instrumento1}
-        instrumento2={el.instrumento2}
-        genero_musical={el.genero_musical}
+        banda={el.banda}
+        miembros={el.miembros}
+        genero_musical_banda={el.genero_musical_banda}
+        descripcion_banda={el.descripcion_banda}
       />
     ));
 
     return (
       <>
-      <h1>Encuentra tu músico</h1>
         <div className="container-fluid">
           <div className="row">
             <div className="col-2">
-              <FiltrosMusico cargaFiltro={this.cargaFiltro} />
+              <FiltrosBanda cargaFiltro={this.cargaFiltro} />
             </div>
             <div className="col-10">
-              {varTarjetas}
+              {varTarjetasBanda}
               <button
                 disabled={this.state.pagina === 0}
                 className="btn btn-primary"
@@ -156,4 +129,4 @@ console.log(edad);
     );
   }
 }
-export default PagTarjetas;
+export default PagTarjetasBanda;

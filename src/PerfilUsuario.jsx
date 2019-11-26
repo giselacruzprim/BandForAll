@@ -16,22 +16,28 @@ class Tarjetas extends React.Component {
       <>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-4"></div>
-            <div className="col-4">
+            <div className="col-3"></div>
+            <div className="col-5">
               <Jumbotron fluid>
                 <Container fluid>
-                  <h1 className="display-3">Fluid jumbotron</h1>
+                  <h1 className="display-3">Perfil</h1>
                   <p className="lead">
                     This is a modified jumbotron that occupies the entire
                     horizontal space of its parent.
                   </p>
                 </Container>
               </Jumbotron>
-              <h1>Nombre:</h1>
+              <div className="row">
+                <h2>Nombre:</h2>  <h2>Apellido:</h2>
+                <div className="col-5"></div>
+                
+                <div className="col-7"></div>
+              </div>
+
               <h5>Edad</h5>
-              <h5>Instrumento:</h5> <h5>Nivel:</h5>
-              <h5>Instrumento:</h5> <h5>Nivel:</h5>
-              <h5>Instrumento:</h5> <h5>Nivel:</h5>
+              <h5>Instrumento 1:</h5> <h5>Nivel:</h5>
+              <h5>Instrumento 2:</h5> <h5>Nivel:</h5>
+              <h5>Instrumento 3:</h5> <h5>Nivel:</h5>
               <h5>Generos</h5>
               <Button color="danger">Eliminar usuario</Button>
             </div>

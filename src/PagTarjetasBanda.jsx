@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TarjetasBanda from "./TarjetasBanda.jsx";
+import FiltrosBanda from "./FiltrosBanda.jsx";
 import { APIURL, ELEMENTOS_POR_PAGINA } from "./Datos.js";
 
 class PagTarjetasBanda extends React.Component {
@@ -12,7 +13,7 @@ class PagTarjetasBanda extends React.Component {
     };
 
     this.cargaDatos = this.cargaDatos.bind(this);
-    this.cargaFiltro = this.cargaFiltro.bind(this);
+    this.cargaFiltroBanda = this.cargaFiltroBanda.bind(this);
     this.siguiente = this.siguiente.bind(this);
     this.anterior = this.anterior.bind(this);
   }
@@ -55,15 +56,15 @@ class PagTarjetasBanda extends React.Component {
       .catch(err => console.log(err));
   }
 
-  cargaFiltro(generoBanda, miembros) {
+  cargaFiltroBanda(generoBanda, miembros) {
     let url = "";
     let afiltros = [];
     if (generoBanda !== "GéneroBanda") {
       afiltros.push(`(genero_musical_banda,like,${generoBanda}~)`);
     }
-    if (miembros !== "Miembros") {
-      afiltros.push(`(miembros,like,${miembros}~)`);
-    }
+    // if (miembros !== "Miembros") {
+    //   afiltros.push(`(miembros,like,${miembros}~)`);
+    // }
 
     if (afiltros.length == 0) {
       url = `${APIURL}bandforall_musico?_size=100`;
@@ -89,7 +90,7 @@ class PagTarjetasBanda extends React.Component {
     }
 
     let i = 1;
-    let varTarjetasBandaBanda = this.state.banda.map(el => (
+    let varTarjetasBanda = this.state.banda.map(el => (
       <TarjetasBanda
         key={i++}
         banda={el.banda}
@@ -104,7 +105,7 @@ class PagTarjetasBanda extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-2">
-              <FiltrosBanda cargaFiltro={this.cargaFiltro} />
+              <FiltrosBanda cargaFiltroBanda={this.cargaFiltroBanda} />
             </div>
             <div className="col-10">
               {varTarjetasBanda}

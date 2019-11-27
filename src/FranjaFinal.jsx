@@ -7,7 +7,7 @@ import {
   DropdownItem, 
 } from "reactstrap";
 
-// HACER MAÑANA !!
+// HACER MAÑANA :)!!
 import banda from "./fotos/targeta1.png";
 import musico from "./fotos/targeta2.png";
 

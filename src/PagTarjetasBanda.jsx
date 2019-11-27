@@ -102,12 +102,15 @@ class PagTarjetasBanda extends React.Component {
 
     return (
       <>
+        <br></br>
+        <h1>Encuentra tu banda</h1>
+        <br></br>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-2">
+            <div className="col-3">
               <FiltrosBanda cargaFiltroBanda={this.cargaFiltroBanda} />
             </div>
-            <div className="col-10">
+            <div className="col-9">
               {varTarjetasBanda}
               <button
                 disabled={this.state.pagina === 0}

@@ -61,9 +61,8 @@ class FiltrosBanda extends React.Component {
 
     return (
       <>
-        <h3>Filtros</h3>
-     
-
+        <h4>Características de la banda</h4>
+        <br></br>
         <FormGroup>
           <Input
             type="select"

@@ -23,7 +23,7 @@ class Top extends React.Component {
   render() {
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light navegadorInicial navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light navegadorInicial navbar navbar-dark bg-dark fixed-top border-bottom">
           <button
             className="navbar-toggler"
             type="button"

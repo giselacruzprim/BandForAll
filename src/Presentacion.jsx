@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import banda from "./fotos/targeta1.png";
 import musico from "./fotos/targeta2.png";
 
+
+
 class Presentacion extends React.Component {
   render() {
     return (

@@ -79,13 +79,13 @@ class Ayuda extends React.Component {
     <div className="card ajuda1">
       <div className="card-body">
         <h5 className="card-title">¿Por qué se desactivó mi anuncio?</h5>
-        <p className="card-text">Hay una serie de razones por las que tu anuncio puede haber sido desactivado. Una publicación se desactiva con mayor frecuencia, cuando el usuario no responde a las consultas en un plazo de 7 días. Si este es el caso, simplemente ve a tus publicaciones y actívala.
+        <p className="card-text">Hay una serie de razones por las que tu anuncio puede haber sido desactivado. Una publicación se desactiva con mayor frecuencia, cuando el usuario no responde a las consultas en un plazo de 7 días. Si este es el caso, simplemente ve a tus publicaciones y actívala.<br />
 
-Otras de las razones que pueden explicar por qué se desactivó tu anuncio son:
+Otras de las razones que pueden explicar por qué se desactivó tu anuncio son:<br />
 
-- Tu anuncio estaba incompleto o contenía información incorrecta, lee más sobre nuestros requisitos mínimos aquí.
-- Tu anuncio está siendo investigado por nuestro equipo.
-- Tu anuncio contenía contenido abusivo, ofensivo u obsceno.
+- Tu anuncio estaba incompleto o contenía información incorrecta, lee más sobre nuestros requisitos mínimos aquí.<br />
+- Tu anuncio está siendo investigado por nuestro equipo.<br />
+- Tu anuncio contenía contenido abusivo, ofensivo u obsceno.<br />
 Si aún no estás seguro de por qué pudo haberse desactivado tu anuncio,  no te preocupes, ¡contáctanos y llegaremos al fondo de esto en poco tiempo!</p>
 
       </div>

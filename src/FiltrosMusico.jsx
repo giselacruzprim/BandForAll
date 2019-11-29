@@ -79,6 +79,7 @@ class FiltrosMusico extends React.Component {
     return (
       <>
         <h2>Filtros</h2>
+        <br></br>
         <FormGroup>
           <Input
             type="select"

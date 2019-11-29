@@ -9,6 +9,10 @@ import {
 import getit2 from "./fotos/getit2.png";
 import getit1 from "./fotos/getit1.png";
 
+// HACER MAÑANA :)!!
+// import banda from "./fotos/targeta1.png";
+// import musico from "./fotos/targeta2.png";
+
 class FranjaFinal extends React.Component {
   render() {
     return (

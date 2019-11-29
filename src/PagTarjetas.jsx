@@ -127,7 +127,9 @@ console.log(edad);
 
     return (
       <>
-      <h1>Encuentra tu músico</h1>
+        <br></br>
+        <h1>Encuentra tu músico</h1>
+        <br></br>
         <div className="container-fluid">
           <div className="row">
             <div className="col-2">

@@ -12,12 +12,12 @@ class TarjetasBanda extends React.Component {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <h4 className="card-title">{this.props.banda}</h4>
-                <h5 className="card-title"> Miembros: {this.props.miembros}</h5>
+                <h4 className="card-title">{this.props.nomBanda}</h4>
+                <h5 className="card-title"> Miembros: {this.props.numBanda}</h5>
                 <h5 className="card-title">
-                  Género: {this.props.genero_musical_banda}
+                  Género: {this.props.genero_banda}
                 </h5>
-                <p className="card-text"> {this.props.descripcion_banda} </p>
+                <p className="card-text"> {this.props.textoBanda} </p>
               </div>
             </div>
           </div>

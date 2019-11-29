@@ -56,11 +56,11 @@ class PagTarjetasBanda extends React.Component {
       .catch(err => console.log(err));
   }
 
-  cargaFiltroBanda(generoBanda, miembros) {
+  cargaFiltroBanda(generoBanda) {
     let url = "";
     let afiltros = [];
     if (generoBanda !== "GéneroBanda") {
-      afiltros.push(`(genero_musical_banda,like,${generoBanda}~)`);
+      afiltros.push(`(genero_banda,like,${generoBanda}~)`);
     }
     // if (miembros !== "Miembros") {
     //   afiltros.push(`(miembros,like,${miembros}~)`);
@@ -93,10 +93,10 @@ class PagTarjetasBanda extends React.Component {
     let varTarjetasBanda = this.state.banda.map(el => (
       <TarjetasBanda
         key={i++}
-        banda={el.banda}
-        miembros={el.miembros}
-        genero_musical_banda={el.genero_musical_banda}
-        descripcion_banda={el.descripcion_banda}
+        nomBanda={el.nomBanda}
+        numBanda={el.numBanda}
+        genero_banda={el.genero_banda}
+        textoBanda={el.textoBanda}
       />
     ));
 

@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Jumbotron, Container, Button } from "reactstrap";
-import { APIURL } from "./Datos.js";
 
-class Tarjetas extends React.Component {
+
+class perfilUsuario extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -48,4 +48,4 @@ class Tarjetas extends React.Component {
     );
   }
 }
-export default Tarjetas;
+export default perfilUsuario;

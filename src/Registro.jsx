@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { APIURL } from "./Datos.js";
 import { FormGroup, Input, Label } from "reactstrap";
+import { Redirect } from "react-router-dom";
 
 class Registro extends React.Component {
   constructor(props) {
@@ -16,8 +17,10 @@ class Registro extends React.Component {
       contrasenya: "",
       instrumento1: "",
       instrumento2: "",
-      nivel1: "",
-      nivel2: "",
+      nivel_instrumento1: "",
+      nivel_instrumento2: "",
+      genero_musico1: "",
+      genero_musico2: "",
       nomBanda: "",
       numBanda: "",
       instrumentoBanda1: "",
@@ -25,9 +28,8 @@ class Registro extends React.Component {
       textoBanda: "",
       fotoMusico: "",
       textoMusico: "",
-      datosAdicionales:"",
-      localidadBanda:"",
-      generoBanda:"",
+      localizacion: "",
+      volver:false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -64,7 +66,7 @@ class Registro extends React.Component {
   creaUsuario(event) {
     event.preventDefault();
 
-    let prod = {
+    let datos = {
       nombre: this.state.nombre,
       apellido: this.state.apellido,
       email: this.state.email,
@@ -72,30 +74,37 @@ class Registro extends React.Component {
       contrasenya: this.state.contrasenya,
       instrumento1: this.state.instrumento1,
       instrumento2: this.state.instrumento2,
-      nivel1: this.state.nivel1,
-      nivel2: this.state.nivel2,
+      nivel_instrumento1: this.state.nivel_instrumento1,
+      nivel_instrumento2: this.state.nivel_instrumento2,
       nomBanda: this.state.nomBanda,
       numBanda: this.state.numBanda,
       textoBanda: this.state.textoBanda,
-      localidad: this.state.localidad,
-      localidadBanda: this.state.localidadBanda,
-      generoBanda: this.state.generoBanda,
-      datosAdicionales: this.state.datosAdicionales,
-
+      localizacion: this.state.localizacion
+      
     };
 
     fetch(APIURL + "bandforall_musico", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify(prod)
+      body: JSON.stringify(datos)
     })
       .then(data => data.json())
       .then(data => console.log(data))
       .then(() => this.setState({ volver: true }))
       .catch(err => console.log(err));
+
+
+    this.props.registraUsuario(datos.nombre);
+
+
   }
 
   render() {
+
+    if (this.state.volver===true){
+      return <Redirect to="/" />;
+    }
+
     if (
       this.state.instrumentos.length === 0 ||
       this.state.generos.length === 0
@@ -115,44 +124,41 @@ class Registro extends React.Component {
     function deshabilitarBanda() {
       let nombreBanda = document.getElementById("nomBanda");
       let numeroBanda = document.getElementById("numBanda");
+      let textoBanda = document.getElementById("textoBanda");
       let instrumento1 = document.getElementById("instBanda1");
       let instrumento2 = document.getElementById("instBanda2");
-      let instrumento3 = document.getElementById("instBanda3");
       let check = document.getElementById("checkboxBanda");
-      let localidadBanda = document.getElementById("localidadBanda");
-      let generoBanda = document.getElementById("generoBanda");
-      let datosAdicionales = document.getElementById("datosAdicionales");
 
-      if (check.checked) {
+      if ((check = true)) {
         nombreBanda.removeAttribute("disabled", "");
         numeroBanda.removeAttribute("disabled", "");
+        textoBanda.removeAttribute("disabled", "");
         instrumento1.removeAttribute("disabled", "");
         instrumento2.removeAttribute("disabled", "");
-        instrumento3.removeAttribute("disabled", "");
-        instrumento3.removeAttribute("disabled", "");
-        localidadBanda.removeAttribute("disabled", "");
-        generoBanda.removeAttribute("disabled", "");
-        datosAdicionales.removeAttribute("disabled", "");
-
       } else {
         nombreBanda.setAttribute("disabled", "");
         numeroBanda.setAttribute("disabled", "");
+        textoBanda.setAttribute("disabled", "");
         instrumento1.setAttribute("disabled", "");
         instrumento2.setAttribute("disabled", "");
-        instrumento3.setAttribute("disabled", "");
-        localidadBanda.setAttribute("disabled", "");
-        generoBanda.setAttribute("disabled", "");
-        datosAdicionales.setAttribute("disabled", "");
       }
     }
 
     return (
       <>
-        <form className="container-fluid" onSubmit={this.creaUsuario}>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <form
+          className="container-fluid formulario"
+          onSubmit={this.creaUsuario}
+        >
           <div className="row">
-            <div className="col-5"></div>
-            <div className="col-7">
-              <h4>Datos usuario</h4>
+            <div className="col"></div>
+            <div className="col">
               <div className="row">
                 <div className="col">
                   <div className="form-group">
@@ -179,90 +185,87 @@ class Registro extends React.Component {
                   </div>
                 </div>
               </div>
+
               <div className="row">
-                <div className="form-group">
-                  <input
-                    onChange={this.handleInputChange}
-                    value={this.state.email}
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Email"
-                    name="email"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    onChange={this.handleInputChange}
-                    value={this.state.confirmaEmail}
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Confirma email"
-                    name="confirmaEmail"
-                  />
-                </div>
-                <div className="form-group">
-                  <div className="col">
-                    <div className="row">
-                      <input
-                        onChange={this.handleInputChange}
-                        value={this.state.contrasenya}
-                        type="password"
-                        className="form-control password"
-                        id="exampleFormControlInput1"
-                        placeholder="Contraseña"
-                        name="contrasenya"
-                      />
-                    </div>
+                <div className="col">
+                  <div className="form-group">
+                    <input
+                      onChange={this.handleInputChange}
+                      value={this.state.email}
+                      type="email"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Email"
+                      name="email"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      onChange={this.handleInputChange}
+                      value={this.state.confirmaEmail}
+                      type="email"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Confirma email"
+                      name="confirmaEmail"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      onChange={this.handleInputChange}
+                      value={this.state.contrasenya}
+                      type="password"
+                      className="form-control password"
+                      id="exampleFormControlInput1"
+                      placeholder="Contraseña"
+                      name="contrasenya"
+                    />
                   </div>
                 </div>
               </div>
               <div className="form-group">
-                <div className="col-7">
-                  <input
-                    onChange={this.handleInputChange}
-                    value={this.state.localidad}
-                    name="localidad"
-                    className="form-control "
-                    id="exampleFormControlInput1"
-                    placeholder="Localidad"
-                  />
-                </div>
+                <input
+                  onChange={this.handleInputChange}
+                  value={this.state.localizacion}
+                  name="localizacion"
+                  className="form-control "
+                  id="exampleFormControlInput1"
+                  placeholder="Localidad"
+                />
               </div>
 
               <div className="row">
                 <div className="col">
-                  <h5>¿Qué instrumentos tocas?</h5>
+                  <h5>¿Que instrumentos tocas?</h5>
                   <div className="row">
-                    <div className="col-7">
-                      <div className="form-group">
+                    <div className="col">
+                      <div class="form-group">
                         <select
-                          className="form-control"
+                          class="form-control"
                           onChange={this.handleInputChange}
                           value={this.state.instrumento1}
                           name="instrumento1"
                         >
-                          <option>Instrumento 1</option>
+                          <option selected>Instrumento 1</option>
                           {filtrosInstrumentos}
                         </select>
                         <select
-                          className="form-control"
+                          class="form-control"
                           onChange={this.handleInputChange}
                           value={this.state.instrumento2}
                           name="instrumento2"
                         >
-                          <option>Instrumento 2</option>
+                          <option selected>Instrumento 2</option>
                           {filtrosInstrumentos}
                         </select>
                       </div>
                     </div>
-                    <div className="col-5">
+                    <div className="col">
                       <select
-                        className="form-control"
+                        class="form-control"
                         onChange={this.handleInputChange}
-                        value={this.state.nivel1}
-                        name="nivel1"
+                        value={this.state.nivel_instrumento1}
+                        name="nivel_instrumento1"
                       >
                         <option>Nivel</option>
                         <option>Principiante</option>
@@ -270,10 +273,10 @@ class Registro extends React.Component {
                         <option>Avanzado</option>
                       </select>
                       <select
-                        className="form-control"
+                        class="form-control"
                         onChange={this.handleInputChange}
-                        value={this.state.nivel2}
-                        name="nivel2"
+                        value={this.state.nivel_instrumento2}
+                        name="nivel_instrumento2"
                       >
                         <option>Nivel</option>
                         <option>Principiante</option>
@@ -282,53 +285,50 @@ class Registro extends React.Component {
                       </select>
                     </div>
                   </div>
-                  <div className="form-group">
-                    <h5>¿Qué géneros tocas?</h5>
-                    <select
-                      className="form-control"
-                      onChange={this.handleInputChange}
-                      value={this.state.genero1}
-                      name="genero1"
-                    >
-                      <option disabled selected>
-                        Género
-                      </option>
-                      {filtrosGenero}
-                    </select>
-                    <select
-                      className="form-control"
-                      onChange={this.handleInputChange}
-                      value={this.state.genero2}
-                      name="genero2"
-                    >
-                      <option>Género</option>
-                      {filtrosGenero}
-                    </select>
-                    <div className="form-group">
-                      <h5 for="exampleFormControlFile1">Adjunta tu foto</h5>
-                      <input
-                        type="file"
-                        className="form-control-file"
-                        id="exampleFormControlFile1"
-                        onChange={this.handleInputChange}
-                        value={this.state.fotoMusico}
-                        name="fotoMusico"
-                      />
-                    </div>
 
-                    <div className="form-group">
-                      <h5 for="exampleFormControlTextarea1">
-                        Datos adicionales
-                      </h5>
-                      <textarea
-                        onChange={this.handleInputChange}
-                        value={this.state.textoMusico}
-                        name="textoMusico"
-                        className="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
-                      ></textarea>
-                    </div>
+                  <h5>¿Qué géneros tocas?</h5>
+                  <select
+                    class="form-control"
+                    onChange={this.handleInputChange}
+                    value={this.state.genero_musico1}
+                    name="genero_musico1"
+                  >
+                    <option disabled selected>
+                      Género
+                    </option>
+                    {filtrosGenero}
+                  </select>
+                  <select
+                    class="form-control"
+                    onChange={this.handleInputChange}
+                    value={this.state.genero_musico2}
+                    name="genero_musico2"
+                  >
+                    <option>Género</option>
+                    {filtrosGenero}
+                  </select>
+                  <div class="form-group">
+                    <h5 for="exampleFormControlFile1">Adjunta tu foto</h5>
+                    <input
+                      type="file"
+                      class="form-control-file"
+                      id="exampleFormControlFile1"
+                      onChange={this.handleInputChange}
+                      value={this.state.fotoMusico}
+                      name="fotoMusico"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <h5 for="exampleFormControlTextarea1">Datos adicionales</h5>
+                    <textarea
+                      onChange={this.handleInputChange}
+                      value={this.state.textoMusico}
+                      name="textoMusico"
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                    ></textarea>
                   </div>
                 </div>
                 <div className="col">
@@ -343,7 +343,6 @@ class Registro extends React.Component {
                       ¿Tienes banda? Anúnciate!
                     </h5>
                   </FormGroup>
-
                   <div className="form-group">
                     <input
                       disabled
@@ -366,45 +365,15 @@ class Registro extends React.Component {
                       id="numBanda"
                       className="form-control"
                     >
-                      <option selected disabled>
-                        Número de miembros
-                      </option>
+                      <option selected>Número de miembros</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
                       <option>5</option>
-                      <option>5+</option>
+                      <option>6</option>
+                      <option>6+</option>
                     </select>
-                  </div>
-                  <div class="form-group">
-                    <h5>¿Género de la banda?</h5>
-                    <select
-                      className="form-control"
-                      onChange={this.handleInputChange}
-                      value={this.state.generoBanda}
-                      name="generoBanda"
-                      disabled
-                      id="generoBanda"
-                    >
-                      <option selected disabled>
-                        Género
-                      </option>
-                      {filtrosGenero}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <div className="col">
-                      <input
-                        onChange={this.handleInputChange}
-                        value={this.state.localidadBanda}
-                        name="localidadBanda"
-                        className="form-control "
-                        disabled
-                        id="localidadBanda"
-                        placeholder="Localidad Banda"
-                      />
-                    </div>
                   </div>
                   <div className="form-group">
                     <h5>¿Qué músicos buscas?</h5>
@@ -423,8 +392,8 @@ class Registro extends React.Component {
                       onChange={this.handleInputChange}
                       value={this.state.instrumentoBanda2}
                       name="instrumentoBanda2"
-                      disabled
                       id="instBanda2"
+                      disabled
                       className="form-control"
                     >
                       <option>Instrumento</option>
@@ -432,22 +401,26 @@ class Registro extends React.Component {
                     </select>
 
                     <div class="form-group">
-                      <h5 for="exampleFormControlTextarea">
-                        Datos adicionales
-                      </h5>
+                      <h5 for="textoBanda">Datos adicionales</h5>
                       <textarea
                         class="form-control"
                         disabled
-                        id="datosAdicionales"
+                        id="textoBanda"
                         rows="3"
                         onChange={this.handleInputChange}
-                        value={this.state.datosAdicionales}
-                        name="datosAdicionales"
+                        value={this.state.textoBanda}
+                        name="textoBanda"
                       ></textarea>
                     </div>
                   </div>
                 </div>
               </div>
+              <input type="submit" value="Registrar" />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
           </div>
         </form>

@@ -1,0 +1,65 @@
+
+
+body{
+    background-color: lightcyan;
+    padding: 20px;
+}
+
+table{
+    border-color: black solid;
+    display: inline-block;
+    border-radius: 20px;
+  
+    
+}
+.datos{
+    border-color: black solid;
+    text-align: left;
+    border-radius: 5px;
+}
+
+th.visto{
+    color: grey;
+    width: 50px;
+    text-align: center;
+   
+}
+
+.vistaprev{
+    width: 500%;
+    height: 250px;
+}
+
+textarea {
+    width: 600px;
+    height: 100px;
+}
+
+time.time{
+    height: 50px;
+    color: grey;
+    margin-left: 200px
+}
+
+button.send{
+    margin-left: 20px;
+}
+
+button.boton1:link{
+    
+    
+    background-color:white;
+
+}
+
+button.boton1:hover  {
+    background-color: lightgrey;
+    font-weight: bold;
+    color: black;
+}
+
+h1.datos {
+    text-align: center;
+    font-size: 50px;
+    
+}

@@ -1,0 +1,43 @@
+body{
+    background-color: lightblue;
+}
+
+
+table.user1 {
+border-color: black solid ;
+display: inline-block;
+padding: 10px;
+margin: 10px;
+width: 600px;
+background-color: aliceblue;
+
+
+}
+
+td.vista {
+    width: 600px;
+    height: 200px;
+    
+    
+}
+
+tr.tofrom{
+    font-size: 17px;
+   
+}
+
+th.visto{
+    border-radius: 20px;
+}
+
+button.boton:link{
+    border-color:black 5px;
+   color:white;
+   
+}
+
+button.boton:hover  {
+    background-color: lightgrey;
+    font-weight: bold;
+    color: black;
+}

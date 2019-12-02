@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { APIURL } from "./Datos.js";
 import { FormGroup, Input, Label } from "reactstrap";
+import { Redirect } from "react-router-dom";
 
 class Registro extends React.Component {
   constructor(props) {
@@ -16,15 +17,19 @@ class Registro extends React.Component {
       contrasenya: "",
       instrumento1: "",
       instrumento2: "",
-      nivel1: "",
-      nivel2: "",
+      nivel_instrumento1: "",
+      nivel_instrumento2: "",
+      genero_musico1: "",
+      genero_musico2: "",
       nomBanda: "",
       numBanda: "",
       instrumentoBanda1: "",
       instrumentoBanda2: "",
       textoBanda: "",
       fotoMusico: "",
-      textoMusico: ""
+      textoMusico: "",
+      localizacion: "",
+      volver:false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -61,7 +66,7 @@ class Registro extends React.Component {
   creaUsuario(event) {
     event.preventDefault();
 
-    let prod = {
+    let datos = {
       nombre: this.state.nombre,
       apellido: this.state.apellido,
       email: this.state.email,
@@ -69,25 +74,37 @@ class Registro extends React.Component {
       contrasenya: this.state.contrasenya,
       instrumento1: this.state.instrumento1,
       instrumento2: this.state.instrumento2,
-      nivel1: this.state.nivel1,
-      nivel2: this.state.nivel2,
+      nivel_instrumento1: this.state.nivel_instrumento1,
+      nivel_instrumento2: this.state.nivel_instrumento2,
       nomBanda: this.state.nomBanda,
       numBanda: this.state.numBanda,
-      textoBanda: this.state.textoBanda
+      textoBanda: this.state.textoBanda,
+      localizacion: this.state.localizacion
+      
     };
 
     fetch(APIURL + "bandforall_musico", {
       method: "POST",
       headers: new Headers({ "Content-Type": "application/json" }),
-      body: JSON.stringify(prod)
+      body: JSON.stringify(datos)
     })
       .then(data => data.json())
       .then(data => console.log(data))
       .then(() => this.setState({ volver: true }))
       .catch(err => console.log(err));
+
+
+    this.props.registraUsuario(datos.nombre);
+
+
   }
 
   render() {
+
+    if (this.state.volver===true){
+      return <Redirect to="/" />;
+    }
+
     if (
       this.state.instrumentos.length === 0 ||
       this.state.generos.length === 0
@@ -107,33 +124,41 @@ class Registro extends React.Component {
     function deshabilitarBanda() {
       let nombreBanda = document.getElementById("nomBanda");
       let numeroBanda = document.getElementById("numBanda");
+      let textoBanda = document.getElementById("textoBanda");
       let instrumento1 = document.getElementById("instBanda1");
       let instrumento2 = document.getElementById("instBanda2");
-      let instrumento3 = document.getElementById("instBanda3");
       let check = document.getElementById("checkboxBanda");
 
-      if (check.checked) {
+      if ((check = true)) {
         nombreBanda.removeAttribute("disabled", "");
         numeroBanda.removeAttribute("disabled", "");
+        textoBanda.removeAttribute("disabled", "");
         instrumento1.removeAttribute("disabled", "");
         instrumento2.removeAttribute("disabled", "");
-        instrumento3.removeAttribute("disabled", "");
       } else {
         nombreBanda.setAttribute("disabled", "");
         numeroBanda.setAttribute("disabled", "");
+        textoBanda.setAttribute("disabled", "");
         instrumento1.setAttribute("disabled", "");
         instrumento2.setAttribute("disabled", "");
-        instrumento3.setAttribute("disabled", "");
       }
     }
 
     return (
       <>
-        <form className="container-fluid" onSubmit={this.creaUsuario}>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <form
+          className="container-fluid formulario"
+          onSubmit={this.creaUsuario}
+        >
           <div className="row">
-            <div className="col-5"></div>
-            <div className="col-7">
-              <h4>Datos usuario</h4>
+            <div className="col"></div>
+            <div className="col">
               <div className="row">
                 <div className="col">
                   <div className="form-group">
@@ -160,243 +185,242 @@ class Registro extends React.Component {
                   </div>
                 </div>
               </div>
+
               <div className="row">
-                <div className="form-group">
-                  <input
-                    onChange={this.handleInputChange}
-                    value={this.state.email}
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Email"
-                    name="email"
-                  />
+                <div className="col">
+                  <div className="form-group">
+                    <input
+                      onChange={this.handleInputChange}
+                      value={this.state.email}
+                      type="email"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Email"
+                      name="email"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      onChange={this.handleInputChange}
+                      value={this.state.confirmaEmail}
+                      type="email"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Confirma email"
+                      name="confirmaEmail"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      onChange={this.handleInputChange}
+                      value={this.state.contrasenya}
+                      type="password"
+                      className="form-control password"
+                      id="exampleFormControlInput1"
+                      placeholder="Contraseña"
+                      name="contrasenya"
+                    />
+                  </div>
                 </div>
-                <div className="form-group">
-                  <input
-                    onChange={this.handleInputChange}
-                    value={this.state.confirmaEmail}
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Confirma email"
-                    name="confirmaEmail"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    onChange={this.handleInputChange}
-                    value={this.state.contrasenya}
-                    type="password"
-                    className="form-control password"
-                    id="exampleFormControlInput1"
-                    placeholder="Contraseña"
-                    name="contrasenya"
-                  />
-                </div>
-                <div className="row">
-                  <div className="col">
-                    <h5>¿Qué instrumentos tocas?</h5>
-                    <div className="row">
-                      <div class="col-7">
-                        <div class="form-group">
-                          <select
-                            class="form-control"
-                            onChange={this.handleInputChange}
-                            value={this.state.instrumento1}
-                            name="instrumento1"
-                  
-                          >
-                            <option>Instrumento 1</option>
-                            {filtrosInstrumentos}
-                          </select>
-                          <select
-                            class="form-control"
-                            onChange={this.handleInputChange}
-                            value={this.state.instrumento2}
-                            name="instrumento2"
-                          >
-                            <option>Instrumento 2</option>
-                            {filtrosInstrumentos}
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-5">
+              </div>
+              <div className="form-group">
+                <input
+                  onChange={this.handleInputChange}
+                  value={this.state.localizacion}
+                  name="localizacion"
+                  className="form-control "
+                  id="exampleFormControlInput1"
+                  placeholder="Localidad"
+                />
+              </div>
+
+              <div className="row">
+                <div className="col">
+                  <h5>¿Que instrumentos tocas?</h5>
+                  <div className="row">
+                    <div className="col">
+                      <div class="form-group">
                         <select
                           class="form-control"
                           onChange={this.handleInputChange}
-                          value={this.state.nivel1}
-                          name="nivel1">
-                          <option>Nivel</option>
-                          <option>Principiante</option>
-                          <option>Intermedio</option>
-                          <option>Avanzado</option>
+                          value={this.state.instrumento1}
+                          name="instrumento1"
+                        >
+                          <option selected>Instrumento 1</option>
+                          {filtrosInstrumentos}
                         </select>
                         <select
                           class="form-control"
                           onChange={this.handleInputChange}
-                          value={this.state.nivel2}
-                          name="nivel2"
+                          value={this.state.instrumento2}
+                          name="instrumento2"
                         >
-                          <option>Nivel</option>
-                          <option>Principiante</option>
-                          <option>Intermedio</option>
-                          <option>Avanzado</option>
+                          <option selected>Instrumento 2</option>
+                          {filtrosInstrumentos}
                         </select>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <h5>¿Qué géneros tocas?</h5>
+                    <div className="col">
                       <select
                         class="form-control"
                         onChange={this.handleInputChange}
-                        value={this.state.genero1}
-                        name="genero1"
+                        value={this.state.nivel_instrumento1}
+                        name="nivel_instrumento1"
                       >
-                        <option disabled selected>
-                          Género
-                        </option>
-                        {filtrosGenero}
+                        <option>Nivel</option>
+                        <option>Principiante</option>
+                        <option>Intermedio</option>
+                        <option>Avanzado</option>
                       </select>
                       <select
                         class="form-control"
                         onChange={this.handleInputChange}
-                        value={this.state.genero2}
-                        name="genero2"
+                        value={this.state.nivel_instrumento2}
+                        name="nivel_instrumento2"
                       >
-                        <option>Género</option>
-                        {filtrosGenero}
+                        <option>Nivel</option>
+                        <option>Principiante</option>
+                        <option>Intermedio</option>
+                        <option>Avanzado</option>
                       </select>
-                      <div class="form-group">
-                        <h5 for="exampleFormControlFile1">Adjunta tu foto</h5>
-                        <input
-                          type="file"
-                          class="form-control-file"
-                          id="exampleFormControlFile1"
-                          onChange={this.handleInputChange}
-                          value={this.state.fotoMusico}
-                          name="fotoMusico"
-                        />
-                      </div>
-
-                      <div class="form-group">
-                        <h5 for="exampleFormControlTextarea1">
-                          Datos adicionales
-                        </h5>
-                        <textarea
-                          onChange={this.handleInputChange}
-                          value={this.state.textoMusico}
-                          name="textoMusico"
-                          class="form-control"
-                          id="exampleFormControlTextarea1"
-                          rows="3"
-                        ></textarea>
-                      </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <FormGroup check>
-                      <Input
-                        type="checkbox"
-                        onClick={deshabilitarBanda}
-                        name="check"
-                        id="checkboxBanda"
-                      />
-                      <h5 for="exampleCheck" check>
-                        ¿Tienes banda? Anúnciate!
-                      </h5>
-                    </FormGroup>
 
-                    <div className="form-group">
-                      <input
-                        disabled
-                        type="text"
-                        className="form-control"
-                        id="nomBanda"
-                        placeholder="Nombre banda"
-                        onChange={this.handleInputChange}
-                        value={this.state.nomBanda}
-                        name="nomBanda"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <h5>Número de miembros</h5>
-                      <select
-                        onChange={this.handleInputChange}
-                        value={this.state.numBanda}
-                        name="numBanda"
-                        disabled
-                        id="numBanda"
-                        className="form-control"
-                      >
-                        <option selected disabled>
-                          Número de miembros
-                        </option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>5+</option>
-                      </select>
-                    </div>
+                  <h5>¿Qué géneros tocas?</h5>
+                  <select
+                    class="form-control"
+                    onChange={this.handleInputChange}
+                    value={this.state.genero_musico1}
+                    name="genero_musico1"
+                  >
+                    <option disabled selected>
+                      Género
+                    </option>
+                    {filtrosGenero}
+                  </select>
+                  <select
+                    class="form-control"
+                    onChange={this.handleInputChange}
+                    value={this.state.genero_musico2}
+                    name="genero_musico2"
+                  >
+                    <option>Género</option>
+                    {filtrosGenero}
+                  </select>
+                  <div class="form-group">
+                    <h5 for="exampleFormControlFile1">Adjunta tu foto</h5>
+                    <input
+                      type="file"
+                      class="form-control-file"
+                      id="exampleFormControlFile1"
+                      onChange={this.handleInputChange}
+                      value={this.state.fotoMusico}
+                      name="fotoMusico"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <h5 for="exampleFormControlTextarea1">Datos adicionales</h5>
+                    <textarea
+                      onChange={this.handleInputChange}
+                      value={this.state.textoMusico}
+                      name="textoMusico"
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="col">
+                  <FormGroup check>
+                    <Input
+                      type="checkbox"
+                      onClick={deshabilitarBanda}
+                      name="check"
+                      id="checkboxBanda"
+                    />
+                    <h5 for="exampleCheck" check>
+                      ¿Tienes banda? Anúnciate!
+                    </h5>
+                  </FormGroup>
+                  <div className="form-group">
+                    <input
+                      disabled
+                      type="text"
+                      className="form-control"
+                      id="nomBanda"
+                      placeholder="Nombre banda"
+                      onChange={this.handleInputChange}
+                      value={this.state.nomBanda}
+                      name="nomBanda"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <h5>Número de miembros</h5>
+                    <select
+                      onChange={this.handleInputChange}
+                      value={this.state.numBanda}
+                      name="numBanda"
+                      disabled
+                      id="numBanda"
+                      className="form-control"
+                    >
+                      <option selected>Número de miembros</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>6+</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <h5>¿Qué músicos buscas?</h5>
+                    <select
+                      onChange={this.handleInputChange}
+                      value={this.state.instrumentoBanda1}
+                      name="instrumentoBanda1"
+                      id="instBanda1"
+                      disabled
+                      className="form-control"
+                    >
+                      <option>Instrumento</option>
+                      {filtrosInstrumentos}
+                    </select>
+                    <select
+                      onChange={this.handleInputChange}
+                      value={this.state.instrumentoBanda2}
+                      name="instrumentoBanda2"
+                      id="instBanda2"
+                      disabled
+                      className="form-control"
+                    >
+                      <option>Instrumento</option>
+                      {filtrosInstrumentos}
+                    </select>
+
                     <div class="form-group">
-                      <h5>¿Género de la banda?</h5>
-                      <select
+                      <h5 for="textoBanda">Datos adicionales</h5>
+                      <textarea
                         class="form-control"
-                        onChange={this.handleInputChange}
-                        value={this.state.genero1}
-                        name="genero1"
-                      >
-                        <option disabled selected>
-                          Género
-                        </option>
-                        {filtrosGenero}
-                      </select>
-                      </div>
-                    <div className="form-group">
-                      <h5>¿Qué músicos buscas?</h5>
-                      <select
-                        onChange={this.handleInputChange}
-                        value={this.state.instrumentoBanda1}
-                        name="instrumentoBanda1"
-                        id="instBanda1"
                         disabled
-                        className="form-control"
-                      >
-                        <option>Instrumento</option>
-                        {filtrosInstrumentos}
-                      </select>
-                      <select
+                        id="textoBanda"
+                        rows="3"
                         onChange={this.handleInputChange}
-                        value={this.state.instrumentoBanda2}
-                        name="instrumentoBanda2"
-                        id="instBanda2"
-                        disabled
-                        className="form-control"
-                      >
-                        <option>Instrumento</option>
-                        {filtrosInstrumentos}
-                      </select>
-
-                      <div class="form-group">
-                        <h5 for="exampleFormControlTextarea">
-                          Datos adicionales
-                        </h5>
-                        <textarea
-                          class="form-control"
-                          disabled
-                          id="exampleFormControlTextarea"
-                          rows="3"
-                          onChange={this.handleInputChange}
-                          value={this.state.textoBanda}
-                          name="textoBanda"
-                        ></textarea>
-                      </div>
+                        value={this.state.textoBanda}
+                        name="textoBanda"
+                      ></textarea>
                     </div>
                   </div>
                 </div>
               </div>
+              <input type="submit" value="Registrar" />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
             </div>
           </div>
         </form>

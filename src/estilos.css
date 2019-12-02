@@ -1,6 +1,12 @@
 
 body {
-  background-color: rgb(253, 255, 242);
+  /* background-color: rgb(253, 255, 242); */
+  background-image: linear-gradient( rgba(255,0,0,0), rgba(255,0,0,1));
+}
+
+.presentacion {
+background-image: linear-gradient( rgba(255,0,0,0), rgba(255,0,0,1));
+background-size: cover;
 }
 
 i.logoProyect {
@@ -34,17 +40,29 @@ div.tarjeta:hover h2 {
 div.tarjeta:hover img {
   opacity: 0.7;
 }
+div.centrar{
+  text-align: center;
 
+}
+
+div.iconos, div.getits {
+  margin: 5px 0;
+ 
+  display: inline-block;
+}
+img.getit {
+  margin: 0 5px;
+}
 div.iconos i {
   color: white;
+  margin: 0 10px;
   font-size: 30px;
 }
 
-div.final {
-  background-color: #90A0E8;
+div.container-fluid.final {
+background-color: transparent !important;
   margin-bottom: 0px;
-  margin-top: 60px;
-  height: 150px;
+  text-align: center;
   padding: 15px;
 }
 
@@ -56,6 +74,8 @@ h1.fraseWeb {
   font-size: 80px;
   text-align: left;
   margin-left: 35px;
+  margin-top: 100px;
+
 }
 
 .faqs {
@@ -67,6 +87,7 @@ h1.fraseWeb {
   text-align: left;
   margin-left: 35px;
   margin-bottom: 60px;
+  margin-top: 100px;
 }
 
 h4.fraseWeb2 span {
@@ -114,7 +135,7 @@ div.dosTarjetas {
 }
 
 nav.navegadorInicial {
-  background-color: transparent !important;
+  background-color:rgb(253, 255, 242) !important;
   /* background-color: aqua !important; */
 }
 
@@ -263,4 +284,8 @@ margin-top: 50px;
 
 .contacto {
   margin-left: 3px;
+}
+
+.getit {
+  width: 150px;
 }

@@ -4,27 +4,22 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem, 
+  DropdownItem,
 } from "reactstrap";
+import getit2 from "./fotos/getit2.png";
+import getit1 from "./fotos/getit1.png";
 
 // HACER MAÑANA :)!!
-import banda from "./fotos/targeta1.png";
-import musico from "./fotos/targeta2.png";
+// import banda from "./fotos/targeta1.png";
+// import musico from "./fotos/targeta2.png";
 
 class FranjaFinal extends React.Component {
   render() {
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light navegadorInicial navbar navbar-dark bg-dark">
-          <div className="container-fluid final">
-            {/* <UncontrolledDropdown direction="up">
-              <DropdownToggle caret>Idiomas</DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>Español</DropdownItem>
-                <DropdownItem>Catalán</DropdownItem>
-                <DropdownItem>Inglés</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown> */}
+       
+
+          <div className="centrar">
 
             <div className="iconos">
               <i
@@ -43,10 +38,16 @@ class FranjaFinal extends React.Component {
                 aria-hidden="true"
               ></i>
             </div>
+<br/>
+            {/* get it on google play/appstore botones */}
+            <div className="getits">
+              <img src={getit1} className="card-img-top getit" alt="musico" />
+              <img src={getit2} className="card-img-top getit" alt="musico" />
+            </div>
           </div>
 
-          <div>  <img src={musico} className="card-img-top" alt="musico" /></div>
-        </nav>
+
+
       </>
     );
   }

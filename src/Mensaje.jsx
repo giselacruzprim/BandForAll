@@ -67,7 +67,7 @@ class Mensaje extends React.Component {
                         <div>
                             <i className="fa fa-hand-o-right" aria-hidden="true"></i>
                             <Button className="boton1" outline color="primary" >
-                                <Link to="/">Return to Mensajes</Link>
+                                <Link to="/mensajes/" float-right>Return to Mensajes</Link>
                             </Button>
                         </div>
                     </footer>

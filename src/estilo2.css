@@ -1,7 +1,7 @@
 
 
 body{
-    background-color: lightcyan;
+    margin-top: 100px;
     padding: 20px;
 }
 
@@ -9,6 +9,7 @@ table{
     border-color: black solid;
     display: inline-block;
     border-radius: 20px;
+    background-color: lightcyan;
   
     
 }

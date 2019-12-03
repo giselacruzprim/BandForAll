@@ -56,7 +56,7 @@ class Mensaje extends React.Component {
                     <div className="areaescribir">
                         <label htmlFor="msg"></label>
                         <br />
-                        <textarea id="msg" ></textarea>
+                        <textarea id="msg" autocomplete="off" placeholder="Escribe aqui." ></textarea>
                         <button className="send">Send</button>
                         <time className="time">{this.state.item.fecha_hora}</time>
                     </div>

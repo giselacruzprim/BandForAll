@@ -25,8 +25,9 @@ class Taula extends React.Component {
                     </thead>
                     <tbody>
                         <tr>
+                            {/* vista previa mensajes */}
                             <td className="vista" colSpan="3">  
-                                 Vista previa mensajes: {this.props.item.mensaje}</td>
+                                  {this.props.item.mensaje}</td>
                             <td style={{ border: "none" }} >
                            
                                 <div>

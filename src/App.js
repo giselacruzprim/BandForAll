@@ -12,6 +12,12 @@ import PagTarjetas from "./PagTarjetas.jsx";
 import PagTarjetasBanda from "./PagTarjetasBanda.jsx";
 import PerfilUsuario from "./PerfilUsuario.jsx";
 import "./estilos.css";
+import Missatges from "./Missatges.jsx";
+import Mensaje from "./Mensaje.jsx";
+import globalTranslations from "./global.json";
+import {withLocalize, Translate} from 'react-localize-redux';
+import { renderToStaticMarkup } from "react-dom/server";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -20,17 +26,37 @@ class App extends React.Component {
       usuarioRegistrado: ""
     };
     this.registraUsuario = this.registraUsuario.bind(this);
+    this.obtenUsuarioRegistrado = this.obtenUsuarioRegistrado.bind(this);
+
+    this.props.initialize({
+      languages: [
+        { name: "Castellano", code: "es" },
+        { name: "Català", code: "ca" },
+        { name: "English", code: "en" },
+      ],
+      translation: globalTranslations,
+      options: { renderToStaticMarkup, defaultLanguage: 'es' }
+    });
+  }
+ 
+  
+
+  registraUsuario(id) {
+    this.setState({ usuarioRegistrado: id });
   }
 
-  registraUsuario(nombre) {
-    this.setState({ usuarioRegistrado: nombre });
+  obtenUsuarioRegistrado() {
+    return this.state.usuarioRegistrado; //({ usuarioRegistrado: id });
   }
 
   render() {
     return (
       <>
         <BrowserRouter>
-          <Top usuarioRegistrado={this.state.usuarioRegistrado} />
+          <Top
+            usuarioRegistrado={this.state.usuarioRegistrado}
+            registraUsuario={this.registraUsuario}
+          />
 
           <Switch>
             <Route exact path="/" component={Presentacion} />
@@ -42,7 +68,16 @@ class App extends React.Component {
             <Route path="/inicio" component={Presentacion} />
             <Route path="/pagTarjetas" component={PagTarjetas} />
             <Route path="/pagTarjetasBanda" component={PagTarjetasBanda} />
-            <Route path="/verPerfil" component={PerfilUsuario} />
+            <Route
+              path="/verPerfil/:id"
+              render={() => (
+                <PerfilUsuario
+                  obtenUsuarioRegistrado={this.obtenUsuarioRegistrado}
+                />
+              )}
+            />
+            <Route path="/mensajes" component={Missatges} />
+            <Route path="/mensaje/:id" component={Mensaje} />
           </Switch>
 
           <FranjaFinal />
@@ -51,4 +86,5 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+export default withLocalize(App);
+

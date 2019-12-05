@@ -33,8 +33,8 @@ class perfilUsuario extends React.Component {
 
         <div className="container-fluid">
           <div className="row">
-            <div className="col-3"></div>
-            <div className="col-5">
+            <div className="col-4"></div>
+            <div className="col-4">
               <Jumbotron fluid>
                 <Container fluid>
                   <h5 className="lead">{this.state.usuarioPerfil.nombre} {this.state.usuarioPerfil.apellido}</h5>

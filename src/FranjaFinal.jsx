@@ -8,6 +8,9 @@ import {
 } from "reactstrap";
 import getit2 from "./fotos/getit2.png";
 import getit1 from "./fotos/getit1.png";
+import { withLocalize, Translate } from "react-localize-redux";
+import TriaIdioma, { Triaidioma } from "./TriaIdioma";
+
 
 // HACER MAÑANA :)!!
 // import banda from "./fotos/targeta1.png";
@@ -20,6 +23,9 @@ class FranjaFinal extends React.Component {
        
 
           <div className="centrar">
+
+
+  
 
             <div className="iconos">
               <i
@@ -45,6 +51,24 @@ class FranjaFinal extends React.Component {
               <img src={getit2} className="card-img-top getit" alt="musico" />
             </div>
           </div>
+
+          <div className="dropdown">
+         <button
+           className="btn btn-secondary dropdown-toggle"
+           type="button"
+           id="dropdownMenu2"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false"
+         >
+           Idioma
+         </button>
+         <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+           <button className="dropdown-item" type="button">
+             <TriaIdioma />
+           </button>
+         </div>
+         </div>
 
 
 

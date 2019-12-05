@@ -9,7 +9,8 @@ class PagTarjetas extends React.Component {
     super(props);
     this.state = {
       musicos: [],
-      pagina: 0
+      pagina: 0,
+      afiltros: []
     };
 
     this.cargaDatos = this.cargaDatos.bind(this);
@@ -46,7 +47,16 @@ class PagTarjetas extends React.Component {
   }
 
   cargaDatos() {
-    let url = APIURL + `bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}`;
+    let url;// = APIURL + `bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}`;
+
+    if (this.state.afiltros.length==0 ) {
+      url = `${APIURL}bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}`; 
+    } else {
+      url = `${APIURL}bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}&_where=`+this.state.afiltros.join("~and");
+    }
+
+    url = encodeURI(url);
+
     fetch(url)
       .then(datos => datos.json())
       .then(datosConvertidos => {
@@ -76,9 +86,9 @@ class PagTarjetas extends React.Component {
 
     let url = "";
     let afiltros=[];
-console.log(edad);
+
     if (genero !== "Género"){
-      afiltros.push(`(genero_musical,like,${genero}~)`);
+      afiltros.push(`(genero_musico1,like,${genero}~)~or(genero_musico2,like,${genero}~)`);
     }
     if (instrumento !== "Instrumento"){
       afiltros.push(`((instrumento1,like,${instrumento}~)~or(instrumento2,like,${instrumento}~)~or(instrumento3,like,${instrumento}~)~or(instrumento4,like,${instrumento}~)~or(instrumento5,like,${instrumento}~))`);
@@ -88,13 +98,16 @@ console.log(edad);
       afiltros.push(`((edad,gte,${minmax[0]})~and(edad,lte,${minmax[1]}))`);
     }
 
+    this.setState({afiltros});
+
     if (afiltros.length==0 ) {
-      url = `${APIURL}bandforall_musico?_size=100`;
+      url = `${APIURL}bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}`;
     } else {
-      url = `${APIURL}bandforall_musico?_size=100&_where=`+afiltros.join("~and");
+      url = `${APIURL}bandforall_musico?_size=${ELEMENTOS_POR_PAGINA}&_p=${this.state.pagina}&_where=`+afiltros.join("~and");
     }
 
     url = encodeURI(url);
+
     console.log("URL", url);
 
     fetch(url)
@@ -121,7 +134,8 @@ console.log(edad);
         texto={el.descripcion}
         instrumento1={el.instrumento1}
         instrumento2={el.instrumento2}
-        genero_musical={el.genero_musical}
+        genero_musico1={el.genero_musico1}
+        genero_musico2={el.genero_musico2}
       />
     ));
 

@@ -3,6 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Jumbotron, Container, Button } from "reactstrap";
 import { APIURL} from "./Datos.js";
 
+
+import { Translate} from 'react-localize-redux';
+
+import TriaIdioma, {Triaidioma} from "./TriaIdioma";
+
 class perfilUsuario extends React.Component {
   constructor(props) {
     super(props);
@@ -45,18 +50,18 @@ class perfilUsuario extends React.Component {
 
                 <div className="col-7"></div>
               </div>
-              <h5>Edad: {this.state.usuarioPerfil.edad}</h5>
-              <h5>Instrumento 1: {this.state.usuarioPerfil.instrumento1}</h5> <h5>Nivel: {this.state.usuarioPerfil.nivel_instrumento1}</h5>
-              <h5>Instrumento 2: {this.state.usuarioPerfil.instrumento2}</h5> <h5>Nivel: {this.state.usuarioPerfil.nivel_instrumento2}</h5>
+              <h5><Translate id="global.edad" /> {this.state.usuarioPerfil.edad}</h5>
+              <h5><Translate id="global.instrumento1" />{this.state.usuarioPerfil.instrumento1}</h5> <h5>Nivel: {this.state.usuarioPerfil.nivel_instrumento1}</h5>
+              <h5><Translate id="global.instrumento2" /> {this.state.usuarioPerfil.instrumento2}</h5> <h5>Nivel: {this.state.usuarioPerfil.nivel_instrumento2}</h5>
              
-              <h5>Generos</h5>
+              <h5><Translate id="global.generos" /></h5>
               <h5> {this.state.usuarioPerfil.genero_musico1}</h5>
               <h5>{this.state.usuarioPerfil.genero_musico2}</h5>
-              <h5>Localización: {this.state.usuarioPerfil.localizacion}</h5>
+              <h5><Translate id="global.localizacion" />: {this.state.usuarioPerfil.localizacion}</h5>
              
               
 
-              <h5>Datos Adicionales:</h5>
+              <h5><Translate id="global.datos" /></h5>
               {this.state.usuarioPerfil.textoMusico}
             </div>
             <div className="col-4"></div>

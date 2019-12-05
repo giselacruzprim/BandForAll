@@ -10,6 +10,8 @@
         "Més de 34.0000 ja ho han fet.",
         "More than 34.000 have already done it."
       ],
+      "Perfil":["Perfil", "Perfil","Profile"],
+
       "registro": ["Regístrate", "Registra't", "Register"],
       "ayuda": ["Ayuda", "Ajuda", "Help"],
       "sesion": ["Iniciar sesión", "Iniciar sessió", "Log in"],
@@ -49,9 +51,9 @@
         "How can I know if I found a musician or a band?"
       ],
       "cuenta": [
-        "No puedo acceder a mi cuenta ¿qué debo hacer?",
+        "No puedo acceder a mi cuenta ¿Qué debo hacer?",
         "No puc accedir al meu compte, què puc fer?",
-        "I can't access to my account, what do I do?"
+        "I can't access to my account, what can I do?"
       ],
       "anuncio": [
         "¿Por qué se desactivó mi anuncio?",
@@ -118,7 +120,15 @@
         "Quins musics us fan falta?",
         "What musicians do you need?"
       ],
-      "localidadBanda": ["Localidad banda", "Localitat banda", "Band location"]
+      "localidadBanda": ["Localidad banda", "Localitat banda", "Band location"],
+      "aceptar":["Aceptar","Acceptar","Accept"],
+      "edad":["Edad","Edat","Age"],
+      "instrumento1":["Instrumento 1","Instrument 1","Instrument 1"],
+      "instrumento2":["Instrumento 2","Instrument 2","Instrument 2"],
+      "generos":["Géneros","Gèneres","Genres"],
+      "localizacion":["Localización","Localització","Location"]
+     
+
     }
    }
    

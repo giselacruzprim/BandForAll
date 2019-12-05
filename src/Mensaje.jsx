@@ -75,6 +75,8 @@ class Mensaje extends React.Component {
             icona = <i className="fa Fa-Check fa-2x" aria-hidden="true"></i>;
         }
 
+        let i=1
+
         return (
             <>
                 <table border="5" cellPadding="10px" >
@@ -87,7 +89,7 @@ class Mensaje extends React.Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td className="vistaprev" colSpan="4"> {this.state.mensaje.split("\n").map(e => <p>{e}</p>)}</td>
+                            <td key= {i++} className="vistaprev" colSpan="4"> {this.state.mensaje.split("\n").map(e => <p>{e}</p>)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -96,7 +98,7 @@ class Mensaje extends React.Component {
                     <div className="areaescribir" >
                         <label htmlFor="msg"></label>
                         <br />
-                        <textarea id="msg" autoComplete="off"  name="mensaje" onChange={this.handleInputChange} placeholder="Escribe aqui." value={this.state.mensaje} ></textarea>
+                        <textarea id="msg" autoComplete="off"  name="mensaje" onChange={this.handleInputChange} placeholder="Escribe aqui." value={this.state.mensaje.hidden} ></textarea>
                         <button className="send" class="float-right" outline color="primary" aria-hidden="true"><strong>Enviar</strong></button>
                         <div className="time" >{this.state.fecha_hora}</div>
                     </div>

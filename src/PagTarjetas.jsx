@@ -64,6 +64,7 @@ class PagTarjetas extends React.Component {
       })
 
       .catch(err => console.log(err));
+      window.scrollTo(0, 0)
   }
 
   rangos(edad) {
@@ -169,6 +170,9 @@ class PagTarjetas extends React.Component {
           <div className="row">
           <div className="col-3"></div>
           <div className="col-9">
+            <div className="row">
+
+            <div className="col-1">
           <button
                 disabled={this.state.pagina === 0}
                 className="btn btn-primary"
@@ -176,6 +180,8 @@ class PagTarjetas extends React.Component {
               >
                 Anterior
               </button>
+              </div>
+              <div className="col-11">
               <button
                 disabled={this.state.pagina === this.state.max_pagina}
                 className="btn btn-primary"
@@ -183,6 +189,8 @@ class PagTarjetas extends React.Component {
               >
                 Siguiente
               </button>
+              </div>
+              </div>
               </div>
           </div>
         </div>

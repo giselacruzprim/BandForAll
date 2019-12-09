@@ -90,7 +90,8 @@ class Registro extends React.Component {
       genero_musico1: this.state.genero_musico1,
       genero_musico2: this.state.genero_musico2,
       textoMusico: this.state.textoMusico,
-      localizacion: this.state.localizacion
+      localizacion: this.state.localizacion,
+      fotoMusico: this.state.fotoMusico,
     
       
     };
@@ -210,7 +211,7 @@ let curlang = this.props.languages.map(el => el.code).indexOf(this.props.activeL
                       className="form-control password"
                       id="exampleFormControlInput5"
                       placeholder={tradueix("contra", curlang)}
-                      name={tradueix("contra", curlang)}
+                      name="contrasenya"
                     />
                   </div>
                 </div>

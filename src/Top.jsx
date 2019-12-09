@@ -190,6 +190,42 @@ class Top extends React.Component {
               </UncontrolledDropdown>
             )}
           </div>
+
+          {this.props.usuarioRegistrado ? (
+            <></>
+          ) : (
+            <UncontrolledDropdown className="dropdown" setActiveFromChild>
+              <DropdownToggle tag="a" className="nav-link" caret>
+                Iniciar sesión
+              </DropdownToggle>
+
+              <DropdownMenu className="menuinicio">
+                <Form.Control
+                  className="correo"
+                  placeholder="Correo electrónico"
+                  onChange={this.handleInputChange}
+                  value={this.state.email}
+                  name="email"
+                />
+                <Form.Control
+                  onChange={this.handleInputChange}
+                  value={this.state.contrasenya}
+                  name="contrasenya"
+                  className="correo"
+                  placeholder="Contraseña"
+                  type="password"
+                />
+
+                <Button
+                  onClick={this.logIn}
+                  className="aceptar"
+                  color="primary"
+                >
+                  Aceptar
+                </Button>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          )}
         </nav>
       </>
     );

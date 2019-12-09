@@ -139,12 +139,7 @@ class Registro extends React.Component {
 let curlang = this.props.languages.map(el => el.code).indexOf(this.props.activeLanguage.code);
     return (
       <>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
+    
         <form
           className="container-fluid formulario"
           onSubmit={this.creaUsuario}
@@ -409,15 +404,20 @@ let curlang = this.props.languages.map(el => el.code).indexOf(this.props.activeL
                   </div>
                 </div>
               </div>
+              <input type="submit" value="Registrar" />
+              <button type="submit" class="btn btn-dark">Dark</button>
+            
               <input type="submit" value={tradueix("_apellidos", curlang)} />
               <br />
               <br />
               <br />
               <br />
               <br />
+
             </div>
             <div className="col"></div>
           </div>
+     
         </form>
       </>
     );

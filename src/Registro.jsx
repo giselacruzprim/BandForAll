@@ -146,12 +146,7 @@ class Registro extends React.Component {
 
     return (
       <>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
+    
         <form
           className="container-fluid formulario"
           onSubmit={this.creaUsuario}
@@ -416,13 +411,18 @@ class Registro extends React.Component {
                 </div>
               </div>
               <input type="submit" value="Registrar" />
+              <button type="submit" class="btn btn-dark">Dark</button>
+            
               <br />
               <br />
               <br />
               <br />
               <br />
+
             </div>
+            <div className="col"></div>
           </div>
+     
         </form>
       </>
     );

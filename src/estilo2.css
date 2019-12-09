@@ -9,7 +9,7 @@ table{
     border-color: black solid;
     display: inline-block;
     border-radius: 20px;
-    background-color: lightcyan;
+    background-color: transparent;
   
     
 }
@@ -29,25 +29,38 @@ th.visto{
 .vistaprev{
     width: 500%;
     height: 250px;
+    
 }
 
 textarea {
-    width: 600px;
+    width: 800px;
     height: 100px;
+    border-radius: 5px;
+    background-color: transparent;
+    border-color: black 2px;
 }
 
-time.time{
+div.time{
     height: 50px;
-    color: grey;
-    margin-left: 200px
+    color: rgb(184, 190, 190);
+    text-align: right;
 }
 
-button.send{
-    margin-left: 20px;
+button.float-right{
+    background-color: white;
+    justify-content: space-between;
+    align-items:right;
+    border-radius: 5px;
 }
+
+button.float-right:hover{
+    background-color: lightgrey;
+    font-weight: bold;
+    color: black;
+}
+
 
 button.boton1:link{
-     
     background-color:white;
 
 }

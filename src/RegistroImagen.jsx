@@ -8,7 +8,7 @@ class RegistroImagen extends React.Component {
   render() {
     return (
       <>
- <img src={fotoRegistro} class="card-img-top" alt="banda" />
+ <img src={fotoRegistro} className="card-img-top" alt="banda" />
 
 
 </>

@@ -3,6 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { APIURL } from "./Datos.js";
 import { FormGroup, Input, Label } from "reactstrap";
 import { Redirect } from "react-router-dom";
+import TriaIdioma, {Triaidioma} from "./TriaIdioma";
+import {withLocalize, Translate} from 'react-localize-redux';
+import  global from './global.json'; //= require('./globals.json');
+const tradueix = (cosa, posicio) => global.global[cosa][posicio];
+console.log(global);
+
 
 class Registro extends React.Component {
   constructor(props) {
@@ -29,7 +35,8 @@ class Registro extends React.Component {
       fotoMusico: "",
       textoMusico: "",
       localizacion: "",
-      volver:false
+      volver:false,
+      bandaHabilitada: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -79,7 +86,12 @@ class Registro extends React.Component {
       nomBanda: this.state.nomBanda,
       numBanda: this.state.numBanda,
       textoBanda: this.state.textoBanda,
+      localizacion: this.state.localizacion,
+      genero_musico1: this.state.genero_musico1,
+      genero_musico2: this.state.genero_musico2,
+      textoMusico: this.state.textoMusico,
       localizacion: this.state.localizacion
+    
       
     };
 
@@ -89,15 +101,16 @@ class Registro extends React.Component {
       body: JSON.stringify(datos)
     })
       .then(data => data.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.props.registraUsuario(data.insertId);
+        console.log(data);
+      })
       .then(() => this.setState({ volver: true }))
       .catch(err => console.log(err));
-
-
-    this.props.registraUsuario(datos.nombre);
-
-
+  
   }
+
+ 
 
   render() {
 
@@ -121,29 +134,8 @@ class Registro extends React.Component {
       <option key={k++}>{el.nombre} </option>
     ));
 
-    function deshabilitarBanda() {
-      let nombreBanda = document.getElementById("nomBanda");
-      let numeroBanda = document.getElementById("numBanda");
-      let textoBanda = document.getElementById("textoBanda");
-      let instrumento1 = document.getElementById("instBanda1");
-      let instrumento2 = document.getElementById("instBanda2");
-      let check = document.getElementById("checkboxBanda");
-
-      if ((check = true)) {
-        nombreBanda.removeAttribute("disabled", "");
-        numeroBanda.removeAttribute("disabled", "");
-        textoBanda.removeAttribute("disabled", "");
-        instrumento1.removeAttribute("disabled", "");
-        instrumento2.removeAttribute("disabled", "");
-      } else {
-        nombreBanda.setAttribute("disabled", "");
-        numeroBanda.setAttribute("disabled", "");
-        textoBanda.setAttribute("disabled", "");
-        instrumento1.setAttribute("disabled", "");
-        instrumento2.setAttribute("disabled", "");
-      }
-    }
-
+  
+let curlang = this.props.languages.map(el => el.code).indexOf(this.props.activeLanguage.code);
     return (
       <>
     
@@ -163,7 +155,7 @@ class Registro extends React.Component {
                       name="nombre"
                       className="form-control "
                       id="exampleFormControlInput1"
-                      placeholder="Nombre"
+                      placeholder={tradueix("_nombre", curlang)}
                     />
                   </div>
                 </div>
@@ -174,8 +166,8 @@ class Registro extends React.Component {
                       value={this.state.apellido}
                       name="apellido"
                       className="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Apellidos"
+                      id="exampleFormControlInput2"
+                      placeholder={tradueix("_apellidos", curlang)}
                     />
                   </div>
                 </div>
@@ -189,8 +181,8 @@ class Registro extends React.Component {
                       value={this.state.email}
                       type="email"
                       className="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Email"
+                      id="exampleFormControlInput3"
+                      placeholder={tradueix("email", curlang)}
                       name="email"
                     />
                   </div>
@@ -200,9 +192,9 @@ class Registro extends React.Component {
                       value={this.state.confirmaEmail}
                       type="email"
                       className="form-control"
-                      id="exampleFormControlInput1"
+                      id="exampleFormControlInput4"
                       placeholder="Confirma email"
-                      name="confirmaEmail"
+                      name={tradueix("confirma_email", curlang)}
                     />
                   </div>
                   <div className="form-group">
@@ -211,9 +203,9 @@ class Registro extends React.Component {
                       value={this.state.contrasenya}
                       type="password"
                       className="form-control password"
-                      id="exampleFormControlInput1"
-                      placeholder="Contraseña"
-                      name="contrasenya"
+                      id="exampleFormControlInput5"
+                      placeholder={tradueix("contra", curlang)}
+                      name={tradueix("contra", curlang)}
                     />
                   </div>
                 </div>
@@ -224,19 +216,19 @@ class Registro extends React.Component {
                   value={this.state.localizacion}
                   name="localizacion"
                   className="form-control "
-                  id="exampleFormControlInput1"
-                  placeholder="Localidad"
+                  id="exampleFormControlInput6"
+                  placeholder={tradueix("localidad", curlang)}
                 />
               </div>
 
               <div className="row">
                 <div className="col">
-                  <h5>¿Que instrumentos tocas?</h5>
+                  <h5>  <Translate id="global.instrumentoToca" /></h5>
                   <div className="row">
                     <div className="col">
-                      <div class="form-group">
+                      <div className="form-group">
                         <select
-                          class="form-control"
+                          className="form-control"
                           onChange={this.handleInputChange}
                           value={this.state.instrumento1}
                           name="instrumento1"
@@ -245,7 +237,7 @@ class Registro extends React.Component {
                           {filtrosInstrumentos}
                         </select>
                         <select
-                          class="form-control"
+                          className="form-control"
                           onChange={this.handleInputChange}
                           value={this.state.instrumento2}
                           name="instrumento2"
@@ -257,7 +249,7 @@ class Registro extends React.Component {
                     </div>
                     <div className="col">
                       <select
-                        class="form-control"
+                        className="form-control"
                         onChange={this.handleInputChange}
                         value={this.state.nivel_instrumento1}
                         name="nivel_instrumento1"
@@ -268,7 +260,7 @@ class Registro extends React.Component {
                         <option>Avanzado</option>
                       </select>
                       <select
-                        class="form-control"
+                        className="form-control"
                         onChange={this.handleInputChange}
                         value={this.state.nivel_instrumento2}
                         name="nivel_instrumento2"
@@ -281,32 +273,32 @@ class Registro extends React.Component {
                     </div>
                   </div>
 
-                  <h5>¿Qué géneros tocas?</h5>
+                  <h5>  <Translate id="global.generoMusico" /></h5>
                   <select
-                    class="form-control"
+                    className="form-control"
                     onChange={this.handleInputChange}
                     value={this.state.genero_musico1}
                     name="genero_musico1"
                   >
-                    <option disabled selected>
+                    <option selected>
                       Género
                     </option>
                     {filtrosGenero}
                   </select>
                   <select
-                    class="form-control"
+                    className="form-control"
                     onChange={this.handleInputChange}
                     value={this.state.genero_musico2}
                     name="genero_musico2"
                   >
-                    <option>Género</option>
+                    <option selected>Género</option>
                     {filtrosGenero}
                   </select>
-                  <div class="form-group">
-                    <h5 for="exampleFormControlFile1">Adjunta tu foto</h5>
+                  <div className="form-group">
+                    <h5 htmlFor="exampleFormControlFile1">  <Translate id="global.foto" /></h5>
                     <input
                       type="file"
-                      class="form-control-file"
+                      className="form-control-file"
                       id="exampleFormControlFile1"
                       onChange={this.handleInputChange}
                       value={this.state.fotoMusico}
@@ -314,13 +306,13 @@ class Registro extends React.Component {
                     />
                   </div>
 
-                  <div class="form-group">
-                    <h5 for="exampleFormControlTextarea1">Datos adicionales</h5>
+                  <div className="form-group">
+                    <h5 htmlFor="exampleFormControlTextarea1">  <Translate id="global.datos" /></h5>
                     <textarea
                       onChange={this.handleInputChange}
                       value={this.state.textoMusico}
                       name="textoMusico"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
                     ></textarea>
@@ -330,17 +322,18 @@ class Registro extends React.Component {
                   <FormGroup check>
                     <Input
                       type="checkbox"
-                      onClick={deshabilitarBanda}
-                      name="check"
+                      onChange={this.handleInputChange}
+                      value={this.state.bandaHabilitada}
+                      name="bandaHabilitada"
                       id="checkboxBanda"
                     />
-                    <h5 for="exampleCheck" check>
-                      ¿Tienes banda? Anúnciate!
+                    <h5 htmlFor="exampleCheck" check>
+                    <Translate id="global.anunciate" />
                     </h5>
                   </FormGroup>
                   <div className="form-group">
                     <input
-                      disabled
+                      disabled={!this.state.bandaHabilitada}
                       type="text"
                       className="form-control"
                       id="nomBanda"
@@ -351,12 +344,12 @@ class Registro extends React.Component {
                     />
                   </div>
                   <div className="form-group">
-                    <h5>Número de miembros</h5>
+                    <h5>  <Translate id="global.miembros" /></h5>
                     <select
                       onChange={this.handleInputChange}
-                      value={this.state.numBanda}
+                      value={ this.state.numBanda}
                       name="numBanda"
-                      disabled
+                      disabled={!this.state.bandaHabilitada}
                       id="numBanda"
                       className="form-control"
                     >
@@ -371,13 +364,13 @@ class Registro extends React.Component {
                     </select>
                   </div>
                   <div className="form-group">
-                    <h5>¿Qué músicos buscas?</h5>
+                    <h5>  <Translate id="global.search" /></h5>
                     <select
                       onChange={this.handleInputChange}
                       value={this.state.instrumentoBanda1}
                       name="instrumentoBanda1"
                       id="instBanda1"
-                      disabled
+                      disabled={!this.state.bandaHabilitada}
                       className="form-control"
                     >
                       <option>Instrumento</option>
@@ -388,18 +381,18 @@ class Registro extends React.Component {
                       value={this.state.instrumentoBanda2}
                       name="instrumentoBanda2"
                       id="instBanda2"
-                      disabled
+                      disabled={!this.state.bandaHabilitada}
                       className="form-control"
                     >
                       <option>Instrumento</option>
                       {filtrosInstrumentos}
                     </select>
 
-                    <div class="form-group">
-                      <h5 for="textoBanda">Datos adicionales</h5>
+                    <div className="form-group">
+                      <h5 htmlFor="textoBanda">  <Translate id="global.datos" /></h5>
                       <textarea
-                        class="form-control"
-                        disabled
+                        className="form-control"
+                        disabled={!this.state.bandaHabilitada}
                         id="textoBanda"
                         rows="3"
                         onChange={this.handleInputChange}
@@ -413,6 +406,7 @@ class Registro extends React.Component {
               <input type="submit" value="Registrar" />
               <button type="submit" class="btn btn-dark">Dark</button>
             
+              <input type="submit" value={tradueix("_apellidos", curlang)} />
               <br />
               <br />
               <br />
@@ -428,4 +422,4 @@ class Registro extends React.Component {
     );
   }
 }
-export default Registro;
+export default withLocalize(Registro);

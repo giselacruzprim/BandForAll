@@ -1,0 +1,134 @@
+{
+    "global": {
+      "intro": [
+        "Tu banda está aquí, solo te hace falta encontrarla.",
+        "La teva banda està aquí només fa falta trobar-la.",
+        "Your band is here you only need to find it."
+      ],
+      "subintro": [
+        "Más de 34.000 personas ya lo han hecho.",
+        "Més de 34.0000 ja ho han fet.",
+        "More than 34.000 have already done it."
+      ],
+      "Perfil":["Perfil", "Perfil","Profile"],
+
+      "registro": ["Regístrate", "Registra't", "Register"],
+      "ayuda": ["Ayuda", "Ajuda", "Help"],
+      "sesion": ["Iniciar sesión", "Iniciar sessió", "Log in"],
+      "preguntas": [
+        "Preguntas frecuentes (FAQ's)",
+        "Preguntes frequënts (FAQ's)",
+        "Frequently asked questions (FAQ's)"
+      ],
+      "comoBanda": [
+        "¿Cómo encuentro una banda?",
+        "Com trobo banda?",
+        "How do I find a band?"
+      ],
+      "respuesta": [
+        "With supporting text below as a natural lead-in to additional content.",
+        "With supporting text below as a natural lead-in to additinal content.",
+        "With supporting text below as a natural lead-in to additional content."
+      ],
+      "comoMusico": [
+        "¿Cómo encuentro músicos?",
+        "Com trobo músics",
+        "How do I find musicians?"
+      ],
+      "seguridad": [
+        "¿Cuáles son los consejos de seguridad que debo seguir?",
+        "Quins són els consells de seguretat que haig de seguir?",
+        "What are the security advices that I have to follow?"
+      ],
+      "report": [
+        "¿Cómo puedo reportar una músico o banda?",
+        "Com puc reportar un músic o banda?",
+        "How can I report a musician or a band?"
+      ],
+      "especificar": [
+        "¿Cómo puedo especificar que ya he encontrado músico o banda?",
+        "Com sé que ja he trobat músic o banda?",
+        "How can I know if I found a musician or a band?"
+      ],
+      "cuenta": [
+        "No puedo acceder a mi cuenta ¿Qué debo hacer?",
+        "No puc accedir al meu compte, què puc fer?",
+        "I can't access to my account, what can I do?"
+      ],
+      "anuncio": [
+        "¿Por qué se desactivó mi anuncio?",
+        "Per què se m'ha desactivat l'anunci?",
+        "Why did my advertisement deactivated?"
+      ],
+      "notificaciones": [
+        "¿Cómo puedo gestionar mis notificaciones?",
+        "Com puc gestionar les meves notificacions?",
+        "How can I manage my notifications"
+      ],
+      "mas": [
+        "¿Tienes más preguntas? ",
+        "Tens més preguntes?",
+        "Do you have more questions?"
+      ],
+        "contacta": [
+        "Contacta con nosotros",
+        "Contacte amb nosaltres",
+        "Contact with us"
+      ],
+      "_nombre": ["Nombre", "Nom", "Surname"],
+      "_apellidos": ["Apellidos", "Cognoms", "Lastname"],
+      "email": ["Email", "Email", "Email"],
+    
+      "confirma_email": ["Confirma email", "Confirma email", "Confirm email"],
+    
+      "contra": ["Constraseña", "Contrasenya", "Password"],
+      "localidad": ["Localidad", "Localitat", "Location"],
+      "instrumentoToca": [
+        "¿Qué instrumentos tocas?",
+        "Quins instruments toques?",
+        "What instruments do you play?"
+      ],
+      "generoMusico": [
+        "¿Qué géneros tocas?",
+        "Quins gèneres toques?",
+        "What genres do you play?"
+      ],
+      "foto": ["Ajdunta tu foto", "Adjunta la teva foto", "Attach your photo"],
+      "datos": [
+        "Datos adicionales",
+        "Dades adicionals",
+        "Additional information"
+      ],
+      "anunciate": [
+        "¿Ya estas en una banda? Anúnciala",
+        "Ja estas en una banda? Anunciala",
+        "Are you in a band already? Announce it"
+      ],
+      "miembros": [
+        "¿Cuantos miembros en la banda soys?",
+        "Quants membres a la banda sou?",
+        "How many members does the band have?"
+      ],
+      "generoBanda": [
+        "¿Qué género toca tu banda?",
+        "Quin gènere toca la teva banda?",
+        "What genre does your band play?"
+      ],
+      "registrar": ["Registrar", "Registrar", "Register"],
+      "search": [
+        "¿Qué músicos os hace falta?",
+        "Quins musics us fan falta?",
+        "What musicians do you need?"
+      ],
+      "localidadBanda": ["Localidad banda", "Localitat banda", "Band location"],
+      "aceptar":["Aceptar","Acceptar","Accept"],
+      "edad":["Edad","Edat","Age"],
+      "instrumento1":["Instrumento 1","Instrument 1","Instrument 1"],
+      "instrumento2":["Instrumento 2","Instrument 2","Instrument 2"],
+      "generos":["Géneros","Gèneres","Genres"],
+      "localizacion":["Localización","Localització","Location"]
+     
+
+    }
+   }
+   

@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
+import { Translate } from "react-localize-redux";
+import TriaIdioma, { Triaidioma } from "./TriaIdioma";
+
 import { APIURL } from "./Datos.js";
 import {
   Navbar,
@@ -72,78 +75,48 @@ class Top extends React.Component {
     if (this.props.usuarioRegistrado) {
       dropdownUsuario = (
         <>
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <div class="dropdown">
-                  <div
-                    class="btn btn-secondary dropdown-toggle"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  </div>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <Link
-                      class="dropdown-item"
-                      to={"/verPerfil/" + this.props.usuarioRegistrado}
-                    >
-                      Ver Perfil
-                    </Link>
-                    <Link
-                      onClick={this.cerrarUsuario}
-                      class="dropdown-item"
-                      to={"/"}
-                    >
-                      Cerrar sesión
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/*  El boton de mensaje. */}
-              <div className="col">
-                <div>
-                  <button className="vermensajes" outline color="primary">
-                    <Link to={"/mensajes"}>
-                      {" "}
-                      <i
-                        className="fa fa-envelope-o"
-                        aria-hidden="true"
-                      ></i>{" "}
-                    </Link>
-                  </button>
-                </div>
-              </div>
+          <div class="dropdown">
+            <div
+              class="btn btn-secondary dropdown-toggle"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <Link
+                class="dropdown-item"
+                to={"/verPerfil/" + this.props.usuarioRegistrado}
+              >
+                Ver Perfil
+              </Link>
+              <Link onClick={this.cerrarUsuario} class="dropdown-item" to={"/"}>
+                Cerrar sesión
+              </Link>
             </div>
           </div>
+
+          {/*  El boton de mensaje. */}
+
+          <button className="vermensajes" outline color="primary">
+            <Link to={"/mensajes"}>
+              {" "}
+              <i className="fa fa-envelope-o" aria-hidden="true"></i>{" "}
+            </Link>
+          </button>
         </>
       );
     }
 
     return (
       <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light navegadorInicial navbar navbar-dark bg-dark fixed-top border-bottom">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarTogglerDemo03"
-            aria-controls="navbarTogglerDemo03"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
+       <nav className="navbar navbar-expand-lg navbar-light bg-light navegadorInicial navbar navbar-dark bg-dark fixed-top border-bottom">
           <Link className="logotipo" to="/inicio">
             <img className="logotipo" src={Logo} />
           </Link>
+
           <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control buscador mr-sm-2"
@@ -162,9 +135,9 @@ class Top extends React.Component {
 
           {dropdownUsuario}
 
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li className="nav-item">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
                 {this.props.usuarioRegistrado ? (
                   <></>
                 ) : (
@@ -173,12 +146,49 @@ class Top extends React.Component {
                   </Link>
                 )}
               </li>
-              <li className="nav-item">
+
+              <li class="nav-item active">
                 <Link className="ayuda" to="/ayuda">
                   Ayuda
                 </Link>
               </li>
             </ul>
+
+            {this.props.usuarioRegistrado ? (
+              <></>
+            ) : (
+              <UncontrolledDropdown className="dropdown" setActiveFromChild>
+                <DropdownToggle tag="a" className="nav-link" caret>
+                  Iniciar sesión
+                </DropdownToggle>
+
+                <DropdownMenu className="menuinicio">
+                  <Form.Control
+                    className="correo"
+                    placeholder="Correo electrónico"
+                    onChange={this.handleInputChange}
+                    value={this.state.email}
+                    name="email"
+                  />
+                  <Form.Control
+                    onChange={this.handleInputChange}
+                    value={this.state.contrasenya}
+                    name="contrasenya"
+                    className="correo"
+                    placeholder="Contraseña"
+                    type="password"
+                  />
+
+                  <Button
+                    onClick={this.logIn}
+                    className="aceptar"
+                    color="primary"
+                  >
+                    Aceptar
+                  </Button>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            )}
           </div>
 
           {this.props.usuarioRegistrado ? (

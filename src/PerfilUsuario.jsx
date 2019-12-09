@@ -4,6 +4,10 @@ import { Jumbotron, Container, Button } from "reactstrap";
 import { APIURL} from "./Datos.js";
 import FotoPerfil from "./fotos/descarga.png";
 
+import { Translate} from 'react-localize-redux';
+
+import TriaIdioma, {Triaidioma} from "./TriaIdioma";
+
 class perfilUsuario extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +30,12 @@ class perfilUsuario extends React.Component {
   render() {
     return (
       <>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         <div className="container-fluid">
           <div className="row">
             <div className="col-3"></div>

@@ -14,6 +14,9 @@ import PerfilUsuario from "./PerfilUsuario.jsx";
 import "./estilos.css";
 import Missatges from "./Missatges.jsx";
 import Mensaje from "./Mensaje.jsx";
+import globalTranslations from "./global.json";
+import {withLocalize, Translate} from 'react-localize-redux';
+import { renderToStaticMarkup } from "react-dom/server";
 
 
 class App extends React.Component {
@@ -24,7 +27,19 @@ class App extends React.Component {
     };
     this.registraUsuario = this.registraUsuario.bind(this);
     this.obtenUsuarioRegistrado = this.obtenUsuarioRegistrado.bind(this);
+
+    this.props.initialize({
+      languages: [
+        { name: "Castellano", code: "es" },
+        { name: "Català", code: "ca" },
+        { name: "English", code: "en" },
+      ],
+      translation: globalTranslations,
+      options: { renderToStaticMarkup, defaultLanguage: 'es' }
+    });
   }
+ 
+  
 
   registraUsuario(id) {
     this.setState({ usuarioRegistrado: id });
@@ -71,4 +86,5 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+export default withLocalize(App);
+

@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import banda from "./fotos/targeta1.png";
 import musico from "./fotos/targeta2.png";
 
-
+import { Translate } from "react-localize-redux";
+import TriaIdioma, {Triaidioma} from "./TriaIdioma";
 
 class Presentacion extends React.Component {
   render() {
@@ -13,36 +14,29 @@ class Presentacion extends React.Component {
           <div className="row">
             <div className="col">
               <h1 className="fraseWeb">
-              Tu banda está aquí, solo te hace falta encontrarla.
+              <Translate id="global.intro" />
+
               </h1>
-              <h4 className="fraseWeb2"><span>34.000+</span> personas ya lo han hecho.</h4>
+              <h4 className="fraseWeb2">
+              <Translate id="global.subintro" />
+              </h4>
             </div>
           </div>
 
-      
-<div className="row">
-<div className="col-12 col-md-6 mb-4">
-<a href="/pagTarjetasBanda">
-                  <img src={banda} className="card-img-top" alt="banda" />
-                  </a>
-
-</div>
-
-<div className="col-12 col-md-6 mb-4">
-<a href="/pagTarjetas">
-            <img src={musico} className="card-img-top" alt="musico" />
-</a>
-</div>
-
-</div>
-     
-            {/* <Link to="/pagTarjetas">Encuentra músico</Link> */}
-           
-
+          <div className="row">
+            <div className="col-12 col-md-6 mb-4">
+              <Link to="/pagTarjetasBanda">
+                <img src={banda} className="card-img-top" alt="banda" />
+              </Link>
             </div>
 
-
-
+            <div className="col-12 col-md-6 mb-4">
+              <Link to="/pagTarjetas">
+                <img src={musico} className="card-img-top" alt="musico" />
+              </Link>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

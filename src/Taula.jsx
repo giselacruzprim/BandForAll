@@ -7,9 +7,9 @@ class Taula extends React.Component {
 
     render() {
 
-        let icona=<><i class="fa fa-times" aria-hidden="true"></i></>;
+        let icona=<><i class="fa fa-times fa-2x" aria-hidden="true" ></i></>;
         if (this.props.item.leido==="si"){
-            icona=<i className="fa Fa-Check" aria-hidden="true"></i>;
+            icona=<i className="fa Fa-Check fa-2x" aria-hidden="true" ></i>;
         }
 
         return (
@@ -20,18 +20,19 @@ class Taula extends React.Component {
                         <tr className="tofrom" > 
                             <th>To: {this.props.item.id_from}</th>
                             <th>From: {this.props.item.id_to}</th>
-                            <th className="visto"><div>{icona}</div> {this.props.item.leido}</th>
+                            <th className="visto"><div>{icona}</div> {this.props.item.leido.hidden}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            {/* vista previa mensajes */}
                             <td className="vista" colSpan="3">  
-                                 Vista previa mensajes: {this.props.item.mensaje}</td>
+                                  {this.props.item.mensaje}</td>
                             <td style={{ border: "none" }} >
                            
                                 <div>
                                     <Button className="boton" outline color="primary" >
-                                    <Link to={"/mensaje/"+this.props.item.id}>Ver</Link></Button>{' '}
+                                    <Link to={"/mensaje/"+this.props.item.id}><strong>Ver</strong></Link></Button>{' '}
                                 </div>
                             </td>
                         </tr>

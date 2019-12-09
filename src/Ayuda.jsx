@@ -1,6 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { Translate } from "react-localize-redux";
+import TriaIdioma, {Triaidioma} from "./TriaIdioma";
+
 class Ayuda extends React.Component {
   render() {
     return (

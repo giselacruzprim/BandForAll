@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from 'react-router-dom';
 
 class TarjetasBanda extends React.Component {
   render() {
@@ -18,6 +19,16 @@ class TarjetasBanda extends React.Component {
                   Género: {this.props.genero_banda}
                 </h5>
                 <p className="card-text"> {this.props.textoBanda} </p>
+
+                 {/*  El boton de mensaje. */}
+
+                <button className="vermensajes" outline color="primary" class="float-right" >
+                  <Link to={"/mensajes"}>
+                    {" "}
+                    <i className="fa fa-envelope-o" aria-hidden="true"></i>{" "}
+                  </Link>
+                </button>
+
               </div>
             </div>
           </div>
